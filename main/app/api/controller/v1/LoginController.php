@@ -287,18 +287,18 @@ class LoginController
         if(empty($spread)){
             return app('json')->fail("需要推广人才能注册");
         }
-//        //验证验证码
-//        $verifyCode = CacheService::get('code_' . $phone);
-//        if (!$verifyCode)
-//            return app('json')->fail(410009);
-//        $verifyCode = substr($verifyCode, 0, 6);
-//        if ($verifyCode != $captcha) {
-//            return app('json')->fail(410010);
-//        }
+        //验证验证码
+        $verifyCode = CacheService::get('code_' . $phone);
+        if (!$verifyCode)
+            return app('json')->fail(410009);
+        $verifyCode = substr($verifyCode, 0, 6);
+        if ($verifyCode != $captcha) {
+            return app('json')->fail(410010);
+        }
         $user_type = $request->getFromType() ? $request->getFromType() : 'h5';
         $token = $this->services->mobile($phone, $spread, $user_type, $agent_id);
         if ($token) {
-//            CacheService::delete('code_' . $phone);
+            CacheService::delete('code_' . $phone);
             return app('json')->success(410001, $token);
         } else {
             return app('json')->fail(410002);
