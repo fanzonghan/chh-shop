@@ -313,7 +313,7 @@ class Common extends AuthController
      */
     public function copyright()
     {
-        $copyrightContext = sys_config('nncnL_crmeb_copyright', '');
+        $copyrightContext = sys_config('nncnL_crmeb_copyright', 'Copyright © 2025-2026 XiaoFanShop');
         $copyrightImage = sys_config('nncnL_crmeb_copyright_image', '');
         return app('json')->success(compact('copyrightContext', 'copyrightImage'));
     }

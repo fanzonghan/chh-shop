@@ -701,12 +701,7 @@ if (!function_exists('get_crmeb_version')) {
      */
     function get_crmeb_version($default = 'v1.0.0')
     {
-        try {
-            $version = parse_ini_file(app()->getRootPath() . '.version');
-            return $version['version'] ?? $default;
-        } catch (\Throwable $e) {
-            return $default;
-        }
+        return 'XiaoFanShop V1.0.1';
     }
 }
 

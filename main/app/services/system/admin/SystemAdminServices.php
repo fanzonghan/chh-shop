@@ -177,7 +177,7 @@ class SystemAdminServices extends BaseServices
             'login_logo' => sys_config('login_logo'),//登陆
             'site_name' => sys_config('site_name'),
             'copyright' => 'Copyright © 2025-2026 XiaoFanShop',
-            'version' => 'XiaoFanShop V1.0.1',
+            'version' => get_crmeb_version(),
             'key' => $key,
             'login_captcha' => 0
         ];
