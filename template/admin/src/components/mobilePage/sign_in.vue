@@ -84,7 +84,7 @@
                 </div>
               </div>
             </div>
-            <div class="tips">连续签到3天，额外活动15积分</div>
+            <div class="tips">连续签到3天，额外活动15权益值</div>
           </div>
         </div>
         <div

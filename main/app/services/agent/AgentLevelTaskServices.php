@@ -12,12 +12,15 @@
 namespace app\services\agent;
 
 use app\dao\agent\AgentLevelTaskDao;
+use app\model\user\User;
+use app\model\user\UserAreaBind;
 use app\services\BaseServices;
 use app\services\order\StoreOrderServices;
 use app\services\user\UserServices;
 use crmeb\exceptions\AdminException;
 use crmeb\exceptions\ApiException;
 use crmeb\services\FormBuilder as Form;
+use think\facade\Log;
 use think\facade\Route as Url;
 
 
@@ -80,6 +83,15 @@ class AgentLevelTaskServices extends BaseServices
             'max_number' => 0,
             'min_number' => 0,
             'unit' => '单'
+        ],
+        [
+            'type' => 6,
+            'method' => 'xiaoquyejiSum',
+            'name' => '小区业绩满{$num}',
+            'real_name' => '小区业绩金额',
+            'max_number' => 0,
+            'min_number' => 0,
+            'unit' => '元'
         ],
     ];
 
@@ -342,6 +354,23 @@ class AgentLevelTaskServices extends BaseServices
                     $storeOrderServices = app()->make(StoreOrderServices::class);
                     $where = ['uid' => $spread_uids, 'paid' => 1, 'refund_status' => 0, 'pid' => 0];
                     $userNumber = $storeOrderServices->count($where);
+                }
+                break;
+            case 6:
+                //小区业绩有多少
+                /** @var UserServices $userServices */
+                $userServices = app()->make(UserServices::class);
+                //找出用户的左右区
+                $LUid = UserAreaBind::where('uid',$uid)->where('area_label','L')->value('zid');
+                $RUid = UserAreaBind::where('uid',$uid)->where('area_label','R')->value('zid');
+                if($LUid && $RUid) {
+                    //两个区都存在
+                    $Lmoney = User::where('uid',$LUid)->value('taem_consume');
+                    Log::error('L:' . $Lmoney);
+                    $Rmoney = User::where('uid',$RUid)->value('taem_consume');
+                    Log::error('r:'.$Rmoney);
+                    //找出最小值
+                    $userNumber = min($Lmoney,$Rmoney);
                 }
                 break;
             default:

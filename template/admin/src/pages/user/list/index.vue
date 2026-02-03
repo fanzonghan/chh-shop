@@ -141,7 +141,7 @@
                   class="form_range_content_width"
                 />
               </el-form-item>
-              <el-form-item label="积分剩余：" label-for="integral">
+              <el-form-item label="权益值剩余：" label-for="integral">
                 <el-input
                   clearable
                   placeholder="最小值"
@@ -399,7 +399,7 @@
                 <el-dropdown-menu slot="dropdown">
                   <!-- <el-dropdown-item command="1">编辑</el-dropdown-item> -->
                   <el-dropdown-item command="2">修改余额</el-dropdown-item>
-                  <el-dropdown-item command="8">修改积分</el-dropdown-item>
+                  <el-dropdown-item command="8">修改权益值</el-dropdown-item>
                   <el-dropdown-item command="3">赠送会员</el-dropdown-item>
                   <!--                                <el-dropdown-item command="4" v-if="row.vip_name">清除等级</el-dropdown-item>-->
                   <el-dropdown-item command="5">设置分组</el-dropdown-item>
@@ -426,7 +426,7 @@
         />
       </div>
     </el-card>
-    <!-- 编辑表单 积分余额-->
+    <!-- 编辑表单 权益值余额-->
     <edit-from ref="edits" :FromData="FromData" @submitFail="submitFail"></edit-from>
     <!-- 发送优惠券-->
     <send-from ref="sends" :userIds="ids.toString()"></send-from>
@@ -1187,7 +1187,7 @@ export default {
           this.$message.error(res.msg);
         });
     },
-    // 获取积分余额表单
+    // 获取权益值余额表单
     getOtherFrom(id, type) {
       this.$modalForm(editOtherApi(id, type)).then(() => this.getList(1));
     },

@@ -1,7 +1,7 @@
 {
-    "name" : "CRMEB标准版",
-    "appid" : "__UNI__A3F1ED4",
-    "description" : "CRMEB标准版",
+    "name" : "CHH-SHOP",
+    "appid" : "__UNI__AA63192",
+    "description" : "CHH-SHOP",
     "versionName" : "5.6.2",
     "versionCode" : 562,
     "transformPx" : false,
@@ -182,7 +182,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wx3b82801238ca1b57",
+        "appid" : "wx83cb1ca3bd5fbb0d",
         "setting" : {
             "urlCheck" : false,
             "minified" : true,

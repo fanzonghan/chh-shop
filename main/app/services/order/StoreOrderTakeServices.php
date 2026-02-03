@@ -127,17 +127,15 @@ class StoreOrderTakeServices extends BaseServices
         $storeTitle = Str::substrUTf8($storeName, 20, 'UTF-8', '');
 
         $res = $this->transaction(function () use ($order, $userInfo, $storeTitle) {
-            //赠送积分
-            $res1 = $this->gainUserIntegral($order, $userInfo, $storeTitle);
-            //返佣
-            $res2 = $this->backOrderBrokerage($order, $userInfo);
-            //经验
-            $res3 = $this->gainUserExp($order, $userInfo);
-            //事业部
-            $res4 = $this->divisionBrokerage($order, $userInfo);
-            if (!($res1 && $res2 && $res3 && $res4)) {
-                throw new ApiException(410205);
-            }
+//            //返佣
+//            $res2 = $this->backOrderBrokerage($order, $userInfo);
+//            //经验
+//            $res3 = $this->gainUserExp($order, $userInfo);
+//            //事业部
+//            $res4 = $this->divisionBrokerage($order, $userInfo);
+//            if (!($res1 && $res2 && $res3 && $res4)) {
+//                throw new ApiException(410205);
+//            }
             return true;
         }, $isTran);
 
@@ -183,7 +181,7 @@ class StoreOrderTakeServices extends BaseServices
     }
 
     /**
-     * 赠送积分
+     * 赠送权益值
      * @param $order
      * @param $userInfo
      * @param $storeTitle
@@ -199,7 +197,7 @@ class StoreOrderTakeServices extends BaseServices
         if (!$userInfo) {
             return true;
         }
-        // 营销产品送积分
+        // 营销产品送权益值
         if (isset($order['combination_id']) && $order['combination_id']) {
             return true;
         }
@@ -223,9 +221,9 @@ class StoreOrderTakeServices extends BaseServices
 
         $order_give_integral = sys_config('order_give_integral');
         if ($order['pay_price'] && $order_give_integral) {
-            //会员消费返积分翻倍
+            //会员消费返权益值翻倍
             if ($userInfo['is_money_level'] > 0) {
-                //看是否开启消费返积分翻倍奖励
+                //看是否开启消费返权益值翻倍奖励
                 /** @var MemberCardServices $memberCardService */
                 $memberCardService = app()->make(MemberCardServices::class);
                 $integral_rule_number = $memberCardService->isOpenMemberCard('integral');
@@ -246,7 +244,7 @@ class StoreOrderTakeServices extends BaseServices
             $orderServices->update($order['id'], ['gain_integral' => $give_integral], 'id');
             event('NoticeListener', [['order' => $order, 'storeTitle' => $storeTitle, 'give_integral' => $give_integral, 'integral' => $integral], 'integral_accout']);
 
-            //自定义消息-积分到账
+            //自定义消息-权益值到账
             event('CustomNoticeListener', [$order['uid'], [
                 'uid' => $order['uid'],
                 'phone' => $userInfo['phone'],
@@ -256,7 +254,7 @@ class StoreOrderTakeServices extends BaseServices
                 'time' => date('Y-m-d H:i:s'),
             ], 'point_received']);
 
-            //自定义事件-积分到账
+            //自定义事件-权益值到账
             event('CustomEventListener', ['order_point', [
                 'uid' => $order['uid'],
                 'order_id' => $order['order_id'],

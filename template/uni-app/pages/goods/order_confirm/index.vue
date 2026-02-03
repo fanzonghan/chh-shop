@@ -116,9 +116,9 @@
 				</view>
 				<view class='item acea-row row-between-wrapper'
 					v-if="!pinkId && !BargainId && !combinationId && !seckillId && !advanceId && integral_open">
-					<view>{{$t(`积分抵扣`)}}</view>
+					<view>{{$t(`权益值抵扣`)}}</view>
 					<view class='discount acea-row row-middle'>
-						<view> {{useIntegral ? $t(`剩余积分`):$t(`当前积分`)}}
+						<view> {{useIntegral ? $t(`剩余权益值`):$t(`当前权益值`)}}
 							<text class='num font-color'>{{integral || 0}}</text>
 						</view>
 						<checkbox-group @change="ChangeIntegral">
@@ -267,7 +267,7 @@
 					<view class='money'>-{{$t(`￥`)}}{{parseFloat(coupon_price).toFixed(2)}}</view>
 				</view>
 				<view class='item acea-row row-between-wrapper' v-if="integral_price > 0">
-					<view>{{$t(`积分抵扣`)}}：</view>
+					<view>{{$t(`权益值抵扣`)}}：</view>
 					<view class='money'>-{{$t(`￥`)}}{{parseFloat(integral_price).toFixed(2)}}</view>
 				</view>
 			</view>
@@ -436,11 +436,11 @@
 				mark: '', //备注信息
 				couponTitle: this.$t(`请选择`), //优惠券
 				coupon_price: 0, //优惠券抵扣金额
-				useIntegral: false, //是否使用积分
-				integral_price: 0, //积分抵扣金额
+				useIntegral: false, //是否使用权益值
+				integral_price: 0, //权益值抵扣金额
 				integral: 0,
 				usable_integral: 0,
-				ChangePrice: 0, //使用积分抵扣变动后的金额
+				ChangePrice: 0, //使用权益值抵扣变动后的金额
 				formIds: [], //收集formid
 				status: 0,
 				is_address: false,
@@ -842,7 +842,7 @@
 				this.computedPrice();
 			},
 			/**
-			 * 使用积分抵扣
+			 * 使用权益值抵扣
 			 */
 			ChangeIntegral: function() {
 				this.useIntegral = !this.useIntegral;

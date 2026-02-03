@@ -28,9 +28,9 @@
             <span>{{ scope.row.days }} (天)</span>
           </template>
         </el-table-column>
-        <el-table-column label="奖励积分" min-width="80">
+        <el-table-column label="奖励权益值" min-width="80">
           <template slot-scope="scope">
-            <span>{{ scope.row.point }} (积分)</span>
+            <span>{{ scope.row.point }} (权益值)</span>
           </template>
         </el-table-column>
         <el-table-column label="奖励经验" min-width="80">

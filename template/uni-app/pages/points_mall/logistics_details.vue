@@ -8,7 +8,7 @@
 				<view class='text acea-row row-between'>
 					<view class='name line2'>{{orderInfo.store_name}}</view>
 					<view class='money'>
-						<view>{{orderInfo.total_price}}{{$t(`积分`)}}</view>
+						<view>{{orderInfo.total_price}}{{$t(`权益值`)}}</view>
 						<view>x{{orderInfo.total_num}}</view>
 					</view>
 					<view class='line1 gray-sty'>{{orderInfo.suk}}</view>

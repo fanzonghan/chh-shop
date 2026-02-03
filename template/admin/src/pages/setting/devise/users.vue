@@ -31,7 +31,7 @@
               </div>
               <div class="item">
                 <div class="num">65749</div>
-                <div class="font">当前积分</div>
+                <div class="font">当前权益值</div>
               </div>
               <div class="item">
                 <div class="num">25</div>

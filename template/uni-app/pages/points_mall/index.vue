@@ -31,7 +31,7 @@
 					<view class="info">
 						<view class="title line1">{{ item.title }}</view>
 						<view class="price-box">
-							{{ item.price }} {{$t(`积分`)}}
+							{{ item.price }} {{$t(`权益值`)}}
 						</view>
 						<view class="sales">{{item.sales}}{{$t(`人兑换`)}}</view>
 					</view>
@@ -43,7 +43,7 @@
 			</view>
 			<view class="footer">
 				<view class="body-title">
-					<text class="title">{{$t(`轻松赚积分`)}}</text>
+					<text class="title">{{$t(`轻松赚权益值`)}}</text>
 					<text></text>
 				</view>
 				<view class="footer-list">
@@ -54,7 +54,7 @@
 								{{$t(`购买商品`)}}
 							</view>
 							<view class="trip">
-								{{$t(`购买商品可获得积分奖励`)}}
+								{{$t(`购买商品可获得权益值奖励`)}}
 							</view>
 						</view>
 					</view>
@@ -72,7 +72,7 @@
 								{{$t(`每日签到活动`)}}
 							</view>
 							<view class="trip">
-								{{$t(`每日签到可获得积分奖励`)}}
+								{{$t(`每日签到可获得权益值奖励`)}}
 							</view>
 						</view>
 					</view>
@@ -90,7 +90,7 @@
 								{{$t(`九宫格抽奖活动`)}}
 							</view>
 							<view class="trip">
-								{{$t(`幸运抽奖可获得积分奖励`)}}
+								{{$t(`幸运抽奖可获得权益值奖励`)}}
 							</view>
 						</view>
 					</view>
@@ -135,7 +135,7 @@
 				imgUrls: [],
 				goodList: [],
 				modelList: [{
-						title: this.$t(`我的积分`),
+						title: this.$t(`我的权益值`),
 						imgUrl: './static/my-point.png',
 						url: "/pages/users/user_integral/index"
 					},
@@ -144,7 +144,7 @@
 						imgUrl: './static/sign-in.png',
 						url: '/pages/users/user_sgin/index'
 					}, {
-						title: this.$t(`积分抽奖`),
+						title: this.$t(`权益值抽奖`),
 						imgUrl: './static/points-lottery.png',
 						url: '/pages/goods/lottery/grids/index?type=1'
 					}, {

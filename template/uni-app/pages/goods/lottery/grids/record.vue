@@ -106,7 +106,7 @@
 		filters: {
 			typeName(type) {
 				if (type == 2) {
-					return '积分';
+					return '权益值';
 				} else if (type == 3) {
 					return '余额';
 				} else if (type == 4) {

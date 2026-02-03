@@ -96,12 +96,12 @@
               </el-form-item>
             </el-col>
             <el-col v-bind="grid">
-              <el-form-item label="积分：" label-for="give_integral">
+              <el-form-item label="权益值：" label-for="give_integral">
                 <el-input-number
                   :controls="false"
                   class="perW100"
                   v-model="formValidate.give_integral"
-                  placeholder="请输入积分"
+                  placeholder="请输入权益值"
                 />
               </el-form-item>
             </el-col>

@@ -314,7 +314,7 @@ class RoutineTemplateListService extends NoticeService
     }
 
     /**
-     * 赠送积分消息提醒
+     * 赠送权益值消息提醒
      * @param $uid
      * @param $order
      * @param $storeTitle

@@ -666,8 +666,8 @@ HTML;
         $price['pay_price_yue'] = 0;//余额支付金额
         $price['pay_price_offline'] = 0;//线下支付金额
         $price['pay_price_other'] = 0;//其他支付金额
-        $price['use_integral'] = 0;//用户使用积分
-        $price['back_integral'] = 0;//退积分总数
+        $price['use_integral'] = 0;//用户使用权益值
+        $price['back_integral'] = 0;//退权益值总数
         $price['deduction_price'] = 0;//抵扣金额
         $price['total_num'] = 0; //商品总数
         $price['today_count_sum'] = 0; //今日订单总数
@@ -806,7 +806,7 @@ HTML;
         $f[] = Form::hidden('total_price', (float)$product->getData('total_price'));
         $f[] = Form::hidden('pay_postage', (float)$product->getData('pay_postage') ?: 0);
         $f[] = Form::number('pay_price', '实际支付金额', (float)$product->getData('pay_price'))->min(0);
-        $f[] = Form::number('gain_integral', '赠送积分', (float)$product->getData('gain_integral') ?: 0)->min(0);
+        $f[] = Form::number('gain_integral', '赠送权益值', (float)$product->getData('gain_integral') ?: 0)->min(0);
         return create_form('修改订单', $f, $this->url('/order/update/' . $id), 'PUT');
     }
 
@@ -859,7 +859,7 @@ HTML;
                         'oid' => $id,
                         'change_type' => 'order_edit',
                         'change_time' => time(),
-                        'change_message' => '修改订单赠送积分为：' . $data['gain_integral']
+                        'change_message' => '修改订单赠送权益值为：' . $data['gain_integral']
                     ]);
             }
             if ($res) {
@@ -2213,7 +2213,7 @@ HTML;
             if (($order['add_time'] + bcmul($secs, '3600', 0)) < time()) {
                 try {
                     $this->transaction(function () use ($order, $refundServices) {
-                        //回退积分和优惠卷
+                        //回退权益值和优惠卷
                         $res = $refundServices->integralAndCouponBack($order, 'cancel');
                         //回退库存和销量
                         $res = $res && $refundServices->regressionStock($order);

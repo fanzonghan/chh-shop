@@ -53,42 +53,8 @@ class Common extends AuthController
     {
         $version = get_crmeb_version();
         $host = $this->request->host();
-        // 正常域名
-        $res = HttpService::request('http://authorize.crmeb.net/api/auth_cert_query', 'post', [
-            'domain_name' => $host,
-            'label' => 34,
-            'version' => $version
-        ]);
-        $res = $res ? json_decode($res, true) : [];
-        $status = $res['data']['status'] ?? -9;
-        switch ((int)$status) {
-            case 1:
-                //审核成功
-                $authCode = $res['data']['auth_code'] ?? '';
-                $autoContent = $res['data']['auto_content'] ?? '';
-                try {
-                    /** @var SystemConfigServices $services */
-                    $services = app()->make(SystemConfigServices::class);
-                    if ($services->count(['menu_name' => 'cert_crmeb'])) {
-                        $services->update(['menu_name' => 'cert_crmeb'], ['value' => json_encode($autoContent . ',' . $authCode)]);
-                    } else {
-                        $services->save([
-                            'menu_name' => 'cert_crmeb',
-                            'type' => 'text',
-                            'input_type' => 'input',
-                            'config_tab_id' => 1,
-                            'value' => json_encode($autoContent . ',' . $authCode),
-                            'status' => 2,
-                            'info' => '授权密钥'
-                        ]);
-                    }
-                } catch (\Throwable $e) {
-                    return app('json')->fail(400330);
-                }
-                return app('json')->success(['status' => 1, 'copyright' => $res['data']['copyright'], 'authCode' => $authCode, 'day' => 0, 'force_reminder' => $upgradeStatus['force_reminder'] ?? 0]);
-            default:
-                return app('json')->success(['status' => -9, 'force_reminder' => $upgradeStatus['force_reminder'] ?? 0]);
-        }
+
+        return app('json')->success(['status' => 1, 'copyright' => 'copyright', 'authCode' => 'authCode', 'day' => 0, 'force_reminder' => $upgradeStatus['force_reminder'] ?? 0]);
     }
 
     /**

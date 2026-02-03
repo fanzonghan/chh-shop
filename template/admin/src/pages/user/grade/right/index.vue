@@ -90,7 +90,7 @@
           :label="
             form.right_type === 'offline' || form.right_type === 'express' || form.right_type === 'vip_price'
               ? '折扣数(%)：'
-              : '积分倍数：'
+              : '权益值倍数：'
           "
           prop="number"
         >

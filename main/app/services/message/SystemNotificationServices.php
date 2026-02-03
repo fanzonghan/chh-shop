@@ -42,7 +42,7 @@ class SystemNotificationServices extends BaseServices
             ['label' => '上次登录时间', 'value' => 'last_time'],
             ['label' => '用户余额', 'value' => 'now_money'],
             ['label' => '用户佣金', 'value' => 'brokerage_price'],
-            ['label' => '用户积分', 'value' => 'integral'],
+            ['label' => '用户权益值', 'value' => 'integral'],
             ['label' => '用户经验', 'value' => 'exp'],
             ['label' => '登录时间', 'value' => 'time'],
         ],
@@ -70,7 +70,7 @@ class SystemNotificationServices extends BaseServices
             ['label' => '商品总数', 'value' => 'total_num'],
             ['label' => '支付金额', 'value' => 'pay_price'],
             ['label' => '支付邮费', 'value' => 'pay_postage'],
-            ['label' => '积分抵扣金额', 'value' => 'deduction_price'],
+            ['label' => '权益值抵扣金额', 'value' => 'deduction_price'],
             ['label' => '优惠券抵扣金额', 'value' => 'coupon_price'],
             ['label' => '支付类型', 'value' => 'pay_type'],
             ['label' => '商品名称', 'value' => 'storeName'],
@@ -87,7 +87,7 @@ class SystemNotificationServices extends BaseServices
             ['label' => '商品总数', 'value' => 'total_num'],
             ['label' => '支付金额', 'value' => 'pay_price'],
             ['label' => '支付邮费', 'value' => 'pay_postage'],
-            ['label' => '积分抵扣金额', 'value' => 'deduction_price'],
+            ['label' => '权益值抵扣金额', 'value' => 'deduction_price'],
             ['label' => '优惠券抵扣金额', 'value' => 'coupon_price'],
             ['label' => '支付类型', 'value' => 'pay_type'],
             ['label' => '商品名称', 'value' => 'storeName'],
@@ -106,7 +106,7 @@ class SystemNotificationServices extends BaseServices
             ['label' => '商品总数', 'value' => 'total_num'],
             ['label' => '支付金额', 'value' => 'pay_price'],
             ['label' => '支付邮费', 'value' => 'pay_postage'],
-            ['label' => '积分抵扣金额', 'value' => 'deduction_price'],
+            ['label' => '权益值抵扣金额', 'value' => 'deduction_price'],
             ['label' => '优惠券抵扣金额', 'value' => 'coupon_price'],
             ['label' => '支付类型', 'value' => 'pay_type'],
             ['label' => '商品名称', 'value' => 'storeName'],
@@ -126,7 +126,7 @@ class SystemNotificationServices extends BaseServices
             ['label' => '商品总数', 'value' => 'total_num'],
             ['label' => '支付金额', 'value' => 'pay_price'],
             ['label' => '支付邮费', 'value' => 'pay_postage'],
-            ['label' => '积分抵扣金额', 'value' => 'deduction_price'],
+            ['label' => '权益值抵扣金额', 'value' => 'deduction_price'],
             ['label' => '优惠券抵扣金额', 'value' => 'coupon_price'],
             ['label' => '支付类型', 'value' => 'pay_type'],
             ['label' => '商品名称', 'value' => 'storeTitle'],
@@ -145,7 +145,7 @@ class SystemNotificationServices extends BaseServices
             ['label' => '商品总数', 'value' => 'total_num'],
             ['label' => '支付金额', 'value' => 'pay_price'],
             ['label' => '支付邮费', 'value' => 'pay_postage'],
-            ['label' => '积分抵扣金额', 'value' => 'deduction_price'],
+            ['label' => '权益值抵扣金额', 'value' => 'deduction_price'],
             ['label' => '优惠券抵扣金额', 'value' => 'coupon_price'],
             ['label' => '支付类型', 'value' => 'pay_type'],
         ],
@@ -160,7 +160,7 @@ class SystemNotificationServices extends BaseServices
             ['label' => '商品总数', 'value' => 'total_num'],
             ['label' => '支付金额', 'value' => 'pay_price'],
             ['label' => '支付邮费', 'value' => 'pay_postage'],
-            ['label' => '积分抵扣金额', 'value' => 'deduction_price'],
+            ['label' => '权益值抵扣金额', 'value' => 'deduction_price'],
             ['label' => '优惠券抵扣金额', 'value' => 'coupon_price'],
             ['label' => '支付类型', 'value' => 'pay_type'],
             ['label' => '退款理由类型', 'value' => 'refund_reason_wap'],
@@ -225,13 +225,13 @@ class SystemNotificationServices extends BaseServices
             ['label' => '到账时间', 'value' => 'time'],
         ],
 
-        //积分到账
+        //权益值到账
         'point_received' => [
             ['label' => '用户uid', 'value' => 'uid'],
             ['label' => '用户电话', 'value' => 'phone'],
-            ['label' => '积分数量', 'value' => 'give_integral'],
+            ['label' => '权益值数量', 'value' => 'give_integral'],
             ['label' => '商品名称', 'value' => 'storeTitle'],
-            ['label' => '积分总数', 'value' => 'integral'],
+            ['label' => '权益值总数', 'value' => 'integral'],
             ['label' => '到账时间', 'value' => 'time'],
         ],
 
@@ -305,7 +305,7 @@ class SystemNotificationServices extends BaseServices
             ['value' => 'extract_success', 'label' => '提现成功场景'],
             ['value' => 'extract_fail', 'label' => '提现失败场景'],
             ['value' => 'brokerage_received', 'label' => '佣金到账场景'],
-            ['value' => 'point_received', 'label' => '积分到账场景'],
+            ['value' => 'point_received', 'label' => '权益值到账场景'],
         ];
         $field = [];
         $field[] = Form::select('custom_trigger', '触发位置', $info['custom_trigger'] ?? '')->options($data);

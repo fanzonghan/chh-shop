@@ -45,7 +45,7 @@ class StoreIntegralDao extends BaseDao
     }
 
     /**
-     * 积分商品列表
+     * 权益值商品列表
      * @param array $where
      * @param int $page
      * @param int $limit
@@ -79,7 +79,7 @@ class StoreIntegralDao extends BaseDao
     }
 
     /**
-     * 获取一条积分商品数据
+     * 获取一条权益值商品数据
      * @param int $id
      * @param string $field
      * @return array|\think\Model|null

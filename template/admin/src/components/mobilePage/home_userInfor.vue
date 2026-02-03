@@ -50,7 +50,7 @@
       <div class="right acea-row row-bottom">
         <div class="item" v-if="checkType.slice(0, 3).indexOf(1) != -1">
           <div class="num">20</div>
-          <div>积分</div>
+          <div>权益值</div>
         </div>
         <div class="item" v-if="checkType.slice(0, 3).indexOf(2) != -1">
           <div class="num">200</div>
@@ -113,7 +113,7 @@
       </div>
       <div class="list acea-row row-around">
         <div class="item" v-if="checkType.indexOf(1) != -1">
-          <div>积分<span class="num">20000</span></div>
+          <div>权益值<span class="num">20000</span></div>
         </div>
         <div class="item" v-if="checkType.indexOf(2) != -1">
           <div>余额<span class="num">200</span></div>
@@ -214,7 +214,7 @@ export default {
           list: [
             {
               id: 1,
-              name: '积分',
+              name: '权益值',
             },
             {
               id: 2,

@@ -324,7 +324,7 @@ export function splitDelivery(data) {
 }
 
 /**
- * @description 获取退积分表单
+ * @description 获取退权益值表单
  * @param {Number} param id {Number} 订单id
  */
 export function refundIntegral(id) {
@@ -469,7 +469,7 @@ export function batchOrderDelivery(id, type, catchType) {
   });
 }
 /**
- * @description 积分商城订单 -- 导出
+ * @description 权益值商城订单 -- 导出
  */
 export function storeIntegralOrder(data) {
   return request({

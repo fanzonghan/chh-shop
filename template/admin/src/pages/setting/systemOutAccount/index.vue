@@ -204,7 +204,7 @@
               v-model="settingData.user_update_push"
               placeholder="请输入用户数据修改推送接口"
             ></el-input>
-            <span class="tips-info">用户修改积分，余额，经验等将用户信息推送至该地址，POST方法</span>
+            <span class="tips-info">用户修改权益值，余额，经验等将用户信息推送至该地址，POST方法</span>
           </div>
         </el-form-item>
         <el-form-item label="订单创建推送接口：" prop="order_create_push">

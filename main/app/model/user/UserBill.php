@@ -123,7 +123,7 @@ class UserBill extends BaseModel
     }
 
     /**
-     * 种类 now_money:余额 integral:积分 exp:经验
+     * 种类 now_money:余额 integral:权益值 exp:经验
      * @param Model $query
      * @param $value
      */

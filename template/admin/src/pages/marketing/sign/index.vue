@@ -49,7 +49,7 @@
                   <span>{{ scope.row.day }}</span>
                 </template>
               </el-table-column>
-              <el-table-column label="获取积分" min-width="80">
+              <el-table-column label="获取权益值" min-width="80">
                 <template slot-scope="scope">
                   <span>{{ scope.row.sign_num }}</span>
                 </template>

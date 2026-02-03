@@ -13,6 +13,7 @@ declare (strict_types=1);
 namespace app\services\user;
 
 use app\dao\user\UserDao;
+use app\jobs\UserRegisterJob;
 use app\services\BaseServices;
 use app\services\yihaotong\SmsRecordServices;
 use app\services\message\notice\SmsService;
@@ -56,8 +57,6 @@ class LoginServices extends BaseServices
         if ($user) {
             if ($user->pwd !== md5((string)$password))
                 throw new ApiException(410025);
-            if ($user->pwd === md5('123456'))
-                throw new ApiException(410026);
         } else {
             throw new ApiException(410025);
         }
@@ -156,7 +155,7 @@ class LoginServices extends BaseServices
                 //永久绑定
                 $store_brokerage_binding_status = sys_config('store_brokerage_binding_status', 1);
                 if ($userInfo->spread_uid && $store_brokerage_binding_status == 1 && !isset($user['is_staff'])) {
-                    $data['login_type'] = $user['login_type'] ?? $userInfo->login_type;
+                    $data['login_type'] = $user['login_type'] ?? $userInfo->login_type??'';
                 } else {
                     //绑定分销关系 = 所有用户
                     if (sys_config('brokerage_bindind', 1) == 1) {
@@ -276,7 +275,6 @@ class LoginServices extends BaseServices
             if ($spread) {
                 //推送消息
                 event('NoticeListener', [['spreadUid' => $spread, 'user_type' => $user_type, 'nickname' => $data['nickname']], 'bind_spread_uid']);
-
                 //自定义事件-绑定关系
                 event('CustomEventListener', ['user_spread', [
                     'uid' => $re->uid,

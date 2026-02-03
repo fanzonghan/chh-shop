@@ -124,7 +124,7 @@ class OutPushJob extends BaseJobs
     }
 
     /**
-     * 余额，积分，佣金，经验变动推送
+     * 余额，权益值，佣金，经验变动推送
      * @param array $data
      * @param string $pushUrl
      * @param int $step

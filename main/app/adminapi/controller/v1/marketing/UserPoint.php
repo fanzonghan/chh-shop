@@ -15,7 +15,7 @@ use app\services\user\UserBillServices;
 use think\facade\App;
 
 /**
- * 积分控制器
+ * 权益值控制器
  * Class StoreCategory
  * @package app\admin\controller\system
  */
@@ -34,7 +34,7 @@ class UserPoint extends AuthController
     }
 
     /**
-     * 积分记录列表
+     * 权益值记录列表
      * @return mixed
      */
     public function index()
@@ -50,7 +50,7 @@ class UserPoint extends AuthController
     }
 
     /**
-     * 获取积分日志头部信息
+     * 获取权益值日志头部信息
      * @return mixed
      */
     public function integral_statistics()

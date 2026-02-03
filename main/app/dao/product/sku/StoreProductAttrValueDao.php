@@ -106,7 +106,7 @@ class StoreProductAttrValueDao extends BaseDao
     }
 
     /**
-     * 根据unique获取一条规格数据(积分商城)
+     * 根据unique获取一条规格数据(权益值商城)
      * @param string $unique
      * @param string $field
      * @return array|\think\Model|null

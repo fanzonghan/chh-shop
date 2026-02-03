@@ -11,6 +11,8 @@
 
 namespace app\jobs;
 
+use app\model\user\User;
+use app\model\user\UserUpBind;
 use app\services\activity\bargain\StoreBargainServices;
 use app\services\activity\combination\StoreCombinationServices;
 use app\services\activity\seckill\StoreSeckillServices;
@@ -23,6 +25,7 @@ use app\services\order\StoreOrderEconomizeServices;
 use app\services\order\StoreOrderServices;
 use app\services\product\product\StoreProductServices;
 use app\services\user\member\MemberCardServices;
+use app\services\user\UserBillServices;
 use app\services\user\UserLabelRelationServices;
 use app\services\user\UserLevelServices;
 use app\services\user\UserServices;
@@ -62,6 +65,23 @@ class OrderJob extends BaseJobs
         } catch (\Throwable $e) {
             Log::error('更新用户订单数失败,失败原因:' . $e->getMessage());
         }
+
+        /** @var UserServices $userServices */
+        $userServices = app()->make(UserServices::class);
+        //下单用户信息
+        $userInfo = $userServices->get((int)$order['uid']);
+
+        //更新个人业绩和累计业绩
+        //更新个人业绩
+        User::where('uid', $order['uid'])->inc('self_consume',$order['total_price'])->update([]);
+        //查出全部上级
+        $superior = UserUpBind::where('uid',$userInfo['uid'])->value('superior');
+        if(!empty($superior)){
+            //存在上级 更新所有上级的团队业绩
+            User::whereIn('uid',$superior)->inc('taem_consume',$order['total_price'])->update([]);
+        }
+
+
         //增加用户标签
         try {
             $this->setUserLabel($order);
@@ -92,13 +112,25 @@ class OrderJob extends BaseJobs
 //        }
 
         //检测会员等级
-        try {
-            /** @var UserLevelServices $levelServices */
-            $levelServices = app()->make(UserLevelServices::class);
-            $levelServices->detection((int)$order['uid']);
-        } catch (\Throwable $e) {
-            Log::error('会员等级升级失败,失败原因:' . $e->getMessage());
+//        try {
+//            /** @var UserLevelServices $levelServices */
+//            $levelServices = app()->make(UserLevelServices::class);
+//            $levelServices->detection((int)$order['uid']);
+//        } catch (\Throwable $e) {
+//            Log::error('会员等级升级失败,失败原因:' . $e->getMessage());
+//        }
+        //赠送权益值
+
+        /** @var UserBillServices $userBillServices */
+        $userBillServices = app()->make(UserBillServices::class);
+
+        if ($order['gain_integral'] > 0) {
+            $userBillServices->income('pay_give_integral', $order['uid'], (int)$order['gain_integral'], $userInfo['integral'] + $order['gain_integral'], $order['id']);
+            $integral = $userInfo['integral'] + $order['gain_integral'];
+            $userInfo->integral = $integral;
+            $userInfo->save();
         }
+
         //向后台发送新订单消息
         try {
             ChannelService::instance()->send('NEW_ORDER', ['order_id' => $order['order_id']]);

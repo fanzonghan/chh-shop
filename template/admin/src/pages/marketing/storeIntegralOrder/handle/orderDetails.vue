@@ -25,7 +25,7 @@
         </el-row>
         <el-row class="mb10">
           <el-col :span="12">商品总数：{{ orderDatalist.orderInfo.total_num }}</el-col>
-          <el-col :span="12">商品总积分：{{ orderDatalist.orderInfo.total_price }}</el-col>
+          <el-col :span="12">商品总权益值：{{ orderDatalist.orderInfo.total_price }}</el-col>
         </el-row>
         <el-row class="mb10">
           <el-col :span="12" class="mb10">创建时间：{{ orderDatalist.orderInfo.add_time }}</el-col>

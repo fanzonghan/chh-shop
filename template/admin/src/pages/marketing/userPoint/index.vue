@@ -63,13 +63,13 @@
             <span>{{ scope.row.title }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="积分变动" min-width="130">
+        <el-table-column label="权益值变动" min-width="130">
           <template slot-scope="scope">
             <div v-if="scope.row.pm" class="z-price">+ {{ scope.row.number }}</div>
             <div v-else class="f-price">- {{ scope.row.number }}</div>
           </template>
         </el-table-column>
-        <el-table-column label="变动后积分" min-width="130">
+        <el-table-column label="变动后权益值" min-width="130">
           <template slot-scope="scope">
             <span>{{ scope.row.balance }}</span>
           </template>

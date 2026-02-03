@@ -169,7 +169,7 @@
           <el-dropdown-menu slot="dropdown">
             <el-dropdown-item :command="1">商品分类</el-dropdown-item>
             <el-dropdown-item :command="2">物流设置</el-dropdown-item>
-            <el-dropdown-item :command="3">购买送积分</el-dropdown-item>
+            <el-dropdown-item :command="3">购买送权益值</el-dropdown-item>
             <el-dropdown-item :command="4">购买送优惠券</el-dropdown-item>
             <el-dropdown-item :command="5">关联用户标签</el-dropdown-item>
             <el-dropdown-item :command="6">活动推荐</el-dropdown-item>
@@ -440,13 +440,13 @@
           </el-col>
           <el-col :span="24" v-if="[3, 4, 5, 6].includes(batchType)">
             <!--            <el-divider content-position="left" v-if="[3, 4, 5, 6].includes(batchType)">营销设置</el-divider>-->
-            <el-form-item label="赠送积分：" prop="give_integral" v-if="batchType == 3">
+            <el-form-item label="赠送权益值：" prop="give_integral" v-if="batchType == 3">
               <el-input-number
                 :controls="false"
                 v-model="batchFormData.give_integral"
                 :min="0"
                 :max="9999999999"
-                placeholder="请输入积分"
+                placeholder="请输入权益值"
                 style="width: 100%"
               />
             </el-form-item>

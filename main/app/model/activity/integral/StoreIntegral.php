@@ -18,7 +18,7 @@ use crmeb\basic\BaseModel;
 use think\Model;
 
 /**
- * TODO 积分商品Model
+ * TODO 权益值商品Model
  * Class StoreCombination
  * @package app\model\activity
  */
@@ -79,7 +79,7 @@ class StoreIntegral extends BaseModel
     }
 
     /**
-     * 积分商品名称搜索器
+     * 权益值商品名称搜索器
      * @param Model $query
      * @param $value
      * @param $data

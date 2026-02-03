@@ -15,7 +15,7 @@ class StoreIntegralController
     }
 
     /**
-     * 积分商城首页数据
+     * 权益值商城首页数据
      * @return mixed
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException
@@ -23,7 +23,7 @@ class StoreIntegralController
      */
     public function index()
     {
-        $data['banner'] = sys_data('integral_shop_banner') ?? [];//TODO 积分商城banner
+        $data['banner'] = sys_data('integral_shop_banner') ?? [];//TODO 权益值商城banner
         $where = ['is_show' => 1];
         $where['is_host'] = 1;
         $data['list'] = $this->services->getIntegralList($where);
@@ -48,7 +48,7 @@ class StoreIntegralController
     }
 
     /**
-     * 积分商品详情
+     * 权益值商品详情
      * @param Request $request
      * @param $id
      * @return mixed

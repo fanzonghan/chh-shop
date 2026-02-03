@@ -68,7 +68,7 @@ class FeiEYun extends BasePrinter
 //        $this->printerContent .= '姓   名: ' . $orderInfo['real_name'] . '<BR>';
 //        $this->printerContent .= '电   话: ' . $orderInfo['user_phone'] . '<BR>';
 //        $this->printerContent .= '地   址: ' . $orderInfo['user_address'] . '<BR>';
-//        $this->printerContent .= '赠送积分: ' . $orderInfo['gain_integral'] . '<BR>';
+//        $this->printerContent .= '赠送权益值: ' . $orderInfo['gain_integral'] . '<BR>';
 //        $this->printerContent .= '订单备注：' . $orderInfo['mark'] . '<BR>';
 //        $this->printerContent .= '**************商品**************<BR>';
 //        $this->printerContent .= '名称           单价  数量 金额<BR>';

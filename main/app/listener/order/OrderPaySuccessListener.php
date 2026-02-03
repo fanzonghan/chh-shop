@@ -4,7 +4,6 @@
 namespace app\listener\order;
 
 
-use app\jobs\AgentJob;
 use app\jobs\notice\PrintJob;
 use app\jobs\OrderInvoiceJob;
 use app\jobs\OrderJob;
@@ -90,9 +89,6 @@ class OrderPaySuccessListener implements ListenerInterface
 
         //支付成功后发送消息
         OrderJob::dispatch([$orderInfo]);
-
-        //支付成功处理自己、上级分销等级升级
-        AgentJob::dispatch([(int)$orderInfo['uid']]);
 
         //商品日志记录支付记录
         ProductLogJob::dispatch(['pay', ['uid' => $orderInfo['uid'], 'order_id' => $orderInfo['id']]]);

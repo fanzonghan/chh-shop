@@ -199,9 +199,9 @@ class UserSignServices extends BaseServices
             $sign_exp = $cumulativeRewardExp;
         }
 
-        //会员签到积分会员奖励
+        //会员签到权益值会员奖励
         if ($user->is_money_level > 0) {
-            //看是否开启签到积分翻倍奖励
+            //看是否开启签到权益值翻倍奖励
             /** @var MemberCardServices $memberCardService */
             $memberCardService = app()->make(MemberCardServices::class);
             $sign_rule_number = $memberCardService->isOpenMemberCard('sign');
@@ -264,7 +264,7 @@ class UserSignServices extends BaseServices
                 $user['sign_num'] = 0;
             }
         }
-        //是否统计积分使用情况
+        //是否统计权益值使用情况
         if ($integral || $all) {
             /** @var UserBillServices $userBill */
             $userBill = app()->make(UserBillServices::class);
@@ -385,7 +385,7 @@ class UserSignServices extends BaseServices
                 }
             }
 
-            //处理处理签到类型展示，type 0已签到，1积分，2经验，3连续，4累积
+            //处理处理签到类型展示，type 0已签到，1权益值，2经验，3连续，4累积
             $signList[$key]['type'] = sys_config('sign_give_point', 0) == 0 && sys_config('member_func_status', 1) == 1 && sys_config('sign_give_exp', 0) > 0 ? 2 : 1;
             $signList[$key]['point'] = (int)sys_config('sign_give_point');
             if (date('Y-m-d', $time) >= date('Y-m-d', time())) {

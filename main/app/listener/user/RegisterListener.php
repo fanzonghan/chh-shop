@@ -4,7 +4,7 @@
 namespace app\listener\user;
 
 
-use app\jobs\AgentJob;
+use app\jobs\UserRegisterJob;
 use app\services\activity\coupon\StoreCouponIssueServices;
 use app\services\user\UserBillServices;
 use app\services\user\UserServices;
@@ -39,9 +39,6 @@ class RegisterListener implements ListenerInterface
                 /** @var UserServices $userServices */
                 $userServices = app()->make(UserServices::class);
                 $userServices->addBrokeragePrice($uid, $spreadUid);
-
-                //推广新人 处理自己、上级分销等级升级
-                AgentJob::dispatch([$uid]);
             }
             //记录推广绑定关系
             /** @var UserSpreadServices $userSpreadServices */
@@ -68,5 +65,8 @@ class RegisterListener implements ListenerInterface
                 $userServices->update($uid, ['is_promoter' => 1]);
             }
         }
+
+        //用户注册后异步处理
+        UserRegisterJob::dispatch([$uid]);
     }
 }

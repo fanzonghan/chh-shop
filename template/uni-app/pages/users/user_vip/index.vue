@@ -190,7 +190,7 @@ export default {
 			levelInfo: {},
 			task_list: [
 				{
-					real_name: this.$t(`积分数`),
+					real_name: this.$t(`权益值数`),
 					number: 0
 				},
 				{
@@ -261,7 +261,7 @@ export default {
 				}
 				this.task_list = [
 					{
-						real_name: this.$t(`积分数`),
+						real_name: this.$t(`权益值数`),
 						number: res.data.integral
 					},
 					{

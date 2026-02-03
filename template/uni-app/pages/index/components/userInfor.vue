@@ -32,7 +32,7 @@
 					<template v-if="dataConfig.styleConfig.tabVal == 1">
 						<view class="item" v-if="checkType.indexOf(1) > -1" @click.stop="goIntegral">
 							<view class="num">{{diyInfo.integral||0}}</view>
-							<view>{{ $t(`积分`) }}</view>
+							<view>{{ $t(`权益值`) }}</view>
 						</view>
 						<view class="item" v-if="checkType.indexOf(2) > -1" @click.stop="goMoney">
 							<view class="num">{{diyInfo.now_money||0}}</view>
@@ -56,7 +56,7 @@
 			<view v-if="dataConfig.styleConfig.tabVal == 0 && isLogin" class="bottom acea-row row-middle">
 				<view v-if="checkType.indexOf(1) != -1" class="item" @click.stop="goIntegral">
 					<view class="num">{{diyInfo.integral||0}}</view>
-					<view>{{ $t(`积分`) }}</view>
+					<view>{{ $t(`权益值`) }}</view>
 				</view>
 				<view v-if="checkType.indexOf(2) != -1" class="item" @click.stop="goMoney">
 					<view class="num">{{diyInfo.now_money||0}}</view>

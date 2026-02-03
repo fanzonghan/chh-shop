@@ -54,7 +54,7 @@
         v-db-click
         @click="add"
         class="mr10"
-        >添加积分商品</el-button
+        >添加权益值商品</el-button
       >
       <el-table
         :data="tableList"
@@ -86,7 +86,7 @@
             </el-tooltip>
           </template>
         </el-table-column>
-        <el-table-column label="兑换积分" min-width="60">
+        <el-table-column label="兑换权益值" min-width="60">
           <template slot-scope="scope">
             <span>{{ scope.row.price }}</span>
           </template>
@@ -132,7 +132,7 @@
             <el-divider direction="vertical"></el-divider>
             <a v-db-click @click="copy(scope.row)">复制</a>
             <el-divider direction="vertical"></el-divider>
-            <a v-db-click @click="del(scope.row, '删除积分商品', scope.$index)">删除</a>
+            <a v-db-click @click="del(scope.row, '删除权益值商品', scope.$index)">删除</a>
           </template>
         </el-table-column>
       </el-table>

@@ -64,7 +64,7 @@
             <span>{{ scope.row.grade }}</span>
           </template>
         </el-table-column>
-        <el-table-column label="一级分佣比例" min-width="150">
+        <!-- <el-table-column label="一级分佣比例" min-width="150">
           <template slot-scope="scope">
             <span
               >{{
@@ -95,7 +95,7 @@
           <template slot-scope="scope">
             <span>{{ scope.row.task_num }}</span>
           </template>
-        </el-table-column>
+        </el-table-column> -->
         <!-- <el-table-column label="一级上浮比例" min-width="130">
           <template slot-scope="scope">
             <span>{{ scope.row.one_brokerage }}%</span>
@@ -171,7 +171,7 @@
         <div>
           <div class="add-task">
             <el-button type="primary" v-db-click @click="taskAdd()">添加等级任务</el-button>
-            <el-button type="primary" v-db-click @click="taskEdit()">设置完成数量</el-button>
+            <!-- <el-button type="primary" v-db-click @click="taskEdit()">设置完成数量</el-button> -->
           </div>
           <div>
             <el-table

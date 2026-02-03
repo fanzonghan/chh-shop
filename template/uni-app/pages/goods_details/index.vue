@@ -112,8 +112,8 @@
 							</view>
 							<!-- <view class='coupon acea-row row-between-wrapper' v-if="storeInfo.give_integral > 0">
 									<view class='hide line1 acea-row'>
-										赠积分：
-										<view class='activity'>赠送 {{storeInfo.give_integral}} 积分</view>
+										赠权益值：
+										<view class='activity'>赠送 {{storeInfo.give_integral}} 权益值</view>
 									</view>
 								</view> -->
 							<view v-if="couponList.length" class="coupon acea-row row-between-wrapper" @click="couponTap" style="margin-top: 0rpx">

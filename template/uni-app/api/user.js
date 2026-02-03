@@ -150,7 +150,7 @@ export function getCommissionInfo(q, types) {
 }
 
 /*
- * 积分记录
+ * 权益值记录
  * */
 export function getIntegralList(q) {
 	return request.get("integral/list", q);

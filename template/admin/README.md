@@ -59,7 +59,7 @@ utils 自定义工具js 独立命名，一般不用新建文件夹
 ├─ system 系统更新日志 数据库管理
 ├─ finance  财务管理
 ├─ agent 分销管理
-├─ marketing 优惠券、积分、拼团、砍价、秒杀
+├─ marketing 优惠券、权益值、拼团、砍价、秒杀
 ├─ echarts 数据统计分析
 ├─ notification  消息通知管理、模版消息（列表，通知，添加，编辑）、短信
 ├─ file 附件文件管理
@@ -177,7 +177,7 @@ utils 自定义工具js 独立命名，一般不用新建文件夹
 │   │         └──storeSeckill        # 秒杀管理
 │   │              └──index          # 秒杀商品
 │   │              └──create         # 添加秒杀商品
-│   │         └──userPoint           # 积分日志
+│   │         └──userPoint           # 权益值日志
 │   │    └──notify                   # 短信设置
 │   │         └──smsConfig           # 短信账户
 │   │         └──smsPay              # 短信购买

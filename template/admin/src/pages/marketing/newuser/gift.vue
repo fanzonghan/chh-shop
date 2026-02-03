@@ -12,14 +12,14 @@
             ></el-input-number>
             <div class="tips-info">新用户奖励金额，必须大于等于0，0为不赠送</div>
           </el-form-item>
-          <el-form-item label="赠送积分：">
+          <el-form-item label="赠送权益值：">
             <el-input-number
               class="form-width"
               v-model="formData.reward_integral"
-              placeholder="请输入赠送积分数量"
+              placeholder="请输入赠送权益值数量"
               :min="0"
             ></el-input-number>
-            <div class="tips-info">新用户奖励积分，必须大于等于0，0为不赠送</div>
+            <div class="tips-info">新用户奖励权益值，必须大于等于0，0为不赠送</div>
           </el-form-item>
           <el-form-item label="赠送优惠券：">
             <div v-if="formData.reward_coupon.length" class="mb10">

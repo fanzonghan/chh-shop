@@ -36,7 +36,7 @@
               生日：<span>{{ spread.birthday }}</span>
             </div>
             <div class="name ivu-form-item-content">
-              积分：<span>{{ spread.integral }}</span>
+              权益值：<span>{{ spread.integral }}</span>
             </div>
           </div>
           <div class="item acea-row row-middle">

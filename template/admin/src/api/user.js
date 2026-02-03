@@ -93,7 +93,7 @@ export function sendCouponApi(data) {
 }
 
 /**
- * @description 修改积分余额表单
+ * @description 修改权益值余额表单
  * @param {Number} param id {Number} 用户id
  */
 export function editOtherApi(id, type) {

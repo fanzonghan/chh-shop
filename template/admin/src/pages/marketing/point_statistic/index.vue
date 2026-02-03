@@ -21,13 +21,13 @@
     </el-card>
     <cards-data :cardLists="cardLists" v-if="cardLists.length >= 0"></cards-data>
     <el-card :bordered="false" shadow="never">
-      <h4 class="statics-header-title">积分使用趋势</h4>
+      <h4 class="statics-header-title">权益值使用趋势</h4>
       <echarts-new :option-data="optionData" :styles="style" height="100%" width="100%" v-if="optionData"></echarts-new>
     </el-card>
     <div class="code-row-bg">
       <el-card :bordered="false" shadow="never" class="ivu-mt mt16 mr16">
         <div class="acea-row row-between-wrapper">
-          <h4 class="statics-header-title">积分来源分析</h4>
+          <h4 class="statics-header-title">权益值来源分析</h4>
           <div class="change-style" v-db-click @click="echartLeft = !echartLeft">切换样式</div>
         </div>
         <div class="ech-box">
@@ -67,7 +67,7 @@
       </el-card>
       <el-card :bordered="false" shadow="never" class="ivu-mt mt16">
         <div class="acea-row row-between-wrapper">
-          <h4 class="statics-header-title">积分消耗</h4>
+          <h4 class="statics-header-title">权益值消耗</h4>
           <div class="change-style" v-db-click @click="echartRight = !echartRight">切换样式</div>
         </div>
         <div class="ech-box">
@@ -137,19 +137,19 @@ export default {
         {
           col: 8,
           count: 0,
-          name: '当前积分',
+          name: '当前权益值',
           className: 'icondangqianjifen',
         },
         {
           col: 8,
           count: 0,
-          name: '累计总积分',
+          name: '累计总权益值',
           className: 'iconleijijifen',
         },
         {
           col: 8,
           count: 0,
-          name: '累计消耗积分',
+          name: '累计消耗权益值',
           className: 'iconxiaohaojifen',
         },
       ],

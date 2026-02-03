@@ -125,68 +125,68 @@ Route::group('marketing', function () {
 
     })->option(['parent' => 'marketing', 'cate_name' => '秒杀活动']);
 
-    /** 积分活动 */
+    /** 权益值活动 */
     Route::group(function () {
-        //积分日志列表
-        Route::get('integral', 'v1.marketing.UserPoint/index')->option(['real_name' => '积分日志列表']);
-        //积分日志头部数据
-        Route::get('integral/statistics', 'v1.marketing.UserPoint/integral_statistics')->option(['real_name' => '积分日志头部数据']);
-        //积分配置编辑表单
-        Route::get('integral_config/edit_basics', 'v1.setting.SystemConfig/edit_basics')->option(['real_name' => '积分配置编辑表单']);
-        //积分配置保存数据
-        Route::post('integral_config/save_basics', 'v1.setting.SystemConfig/save_basics')->option(['real_name' => '积分配置保存数据']);
-        //积分商品列表
-        Route::get('integral_product', 'v1.marketing.integral.StoreIntegral/index')->option(['real_name' => '积分商品列表']);
-        //积分商品新增或编辑
-        Route::post('integral/:id', 'v1.marketing.integral.StoreIntegral/save')->option(['real_name' => '积分商品新增或编辑']);
-        //积分商品详情
-        Route::get('integral/:id', 'v1.marketing.integral.StoreIntegral/read')->option(['real_name' => '积分商品详情']);
-        //积分商品删除
-        Route::delete('integral/:id', 'v1.marketing.integral.StoreIntegral/delete')->option(['real_name' => '积分商品删除']);
-        //修改积分商品状态
-        Route::put('integral/set_show/:id/:is_show', 'v1.marketing.integral.StoreIntegral/set_show')->option(['real_name' => '修改积分商品状态']);
-        //积分商城订单列表
-        Route::get('integral/order/list', 'v1.marketing.integral.StoreIntegralOrder/lst')->option(['real_name' => '积分商城订单列表']);
-        //积分商城订单数据
-        Route::get('integral/order/chart', 'v1.marketing.integral.StoreIntegralOrder/chart')->option(['real_name' => '积分商城订单数据']);
-        //积分商城订单详情数据
-        Route::get('integral/order/info/:id', 'v1.marketing.integral.StoreIntegralOrder/order_info')->option(['real_name' => '积分商城订单详情数据']);
-        //修改积分商品订单备注信息
-        Route::put('integral/order/remark/:id', 'v1.marketing.integral.StoreIntegralOrder/remark')->option(['real_name' => '修改积分商品订单备注信息']);
-        //获取积分订单状态
-        Route::get('integral/order/status/:id', 'v1.marketing.integral.StoreIntegralOrder/status')->option(['real_name' => '获取积分订单状态']);
-        //删除积分订单
-        Route::delete('integral/order/del/:id', 'v1.marketing.integral.StoreIntegralOrder/del')->option(['real_name' => '删除积分订单']);
-        //积分订单发送货
-        Route::put('integral/order/delivery/:id', 'v1.marketing.integral.StoreIntegralOrder/update_delivery')->option(['real_name' => '积分订单发送货']);
-        //获取积分订单配送信息表单
-        Route::get('integral/order/distribution/:id', 'v1.marketing.integral.StoreIntegralOrder/distribution')->option(['real_name' => '获取积分订单配送信息表单']);
-        //修改积分订单配送信息
-        Route::put('integral/order/distribution/:id', 'v1.marketing.integral.StoreIntegralOrder/update_distribution')->option(['real_name' => '修改积分订单配送信息']);
-        //积分订单确认收货
-        Route::put('integral/order/take/:id', 'v1.marketing.integral.StoreIntegralOrder/take_delivery')->option(['real_name' => '积分订单确认收货']);
-        //积分订单获取物流公司
-        Route::get('integral/order/express_list', 'v1.marketing.integral.StoreIntegralOrder/express')->option(['real_name' => '积分订单获取物流公司']);
-        //积分订单快递公司电子面单模版
-        Route::get('integral/order/express/temp', 'v1.marketing.integral.StoreIntegralOrder/express_temp')->option(['real_name' => '积分订单快递公司电子面单模版']);
-        //积分订单获取物流信息
-        Route::get('integral/order/express/:id', 'v1.marketing.integral.StoreIntegralOrder/get_express')->option(['real_name' => '积分订单获取物流信息']);
-        //打印积分订单
-        Route::get('integral/order/print/:id', 'v1.marketing.integral.StoreIntegralOrder/order_print')->option(['real_name' => '打印积分订单']);
-        //积分订单列表获取配送员
-        Route::get('integral/order/delivery/list', 'v1.order.DeliveryService/get_delivery_list')->option(['real_name' => '积分订单列表获取配送员']);
-        //积分订单获取面单默认配置信息
-        Route::get('integral/order/sheet_info', 'v1.marketing.integral.StoreIntegralOrder/getDeliveryInfo')->option(['real_name' => '积分订单获取面单默认配置信息']);
-        //积分记录
-        Route::get('point_record', 'v1.marketing.integral.StorePointRecord/pointRecord')->option(['real_name' => '积分记录列表']);
-        Route::post('point_record/remark/:id', 'v1.marketing.integral.StorePointRecord/pointRecordRemark')->option(['real_name' => '积分记录列表备注']);
-        Route::get('point/get_basic', 'v1.marketing.integral.StorePointRecord/getBasic')->option(['real_name' => '积分统计基本信息']);
-        Route::get('point/get_trend', 'v1.marketing.integral.StorePointRecord/getTrend')->option(['real_name' => '积分统计趋势图']);
-        //积分来源统计
-        Route::get('point/get_channel', 'v1.marketing.integral.StorePointRecord/getChannel')->option(['real_name' => '积分来源统计']);
-        //积分消耗统计
-        Route::get('point/get_type', 'v1.marketing.integral.StorePointRecord/getType')->option(['real_name' => '积分消耗统计']);
-    })->option(['parent' => 'marketing', 'cate_name' => '积分活动']);
+        //权益值日志列表
+        Route::get('integral', 'v1.marketing.UserPoint/index')->option(['real_name' => '权益值日志列表']);
+        //权益值日志头部数据
+        Route::get('integral/statistics', 'v1.marketing.UserPoint/integral_statistics')->option(['real_name' => '权益值日志头部数据']);
+        //权益值配置编辑表单
+        Route::get('integral_config/edit_basics', 'v1.setting.SystemConfig/edit_basics')->option(['real_name' => '权益值配置编辑表单']);
+        //权益值配置保存数据
+        Route::post('integral_config/save_basics', 'v1.setting.SystemConfig/save_basics')->option(['real_name' => '权益值配置保存数据']);
+        //权益值商品列表
+        Route::get('integral_product', 'v1.marketing.integral.StoreIntegral/index')->option(['real_name' => '权益值商品列表']);
+        //权益值商品新增或编辑
+        Route::post('integral/:id', 'v1.marketing.integral.StoreIntegral/save')->option(['real_name' => '权益值商品新增或编辑']);
+        //权益值商品详情
+        Route::get('integral/:id', 'v1.marketing.integral.StoreIntegral/read')->option(['real_name' => '权益值商品详情']);
+        //权益值商品删除
+        Route::delete('integral/:id', 'v1.marketing.integral.StoreIntegral/delete')->option(['real_name' => '权益值商品删除']);
+        //修改权益值商品状态
+        Route::put('integral/set_show/:id/:is_show', 'v1.marketing.integral.StoreIntegral/set_show')->option(['real_name' => '修改权益值商品状态']);
+        //权益值商城订单列表
+        Route::get('integral/order/list', 'v1.marketing.integral.StoreIntegralOrder/lst')->option(['real_name' => '权益值商城订单列表']);
+        //权益值商城订单数据
+        Route::get('integral/order/chart', 'v1.marketing.integral.StoreIntegralOrder/chart')->option(['real_name' => '权益值商城订单数据']);
+        //权益值商城订单详情数据
+        Route::get('integral/order/info/:id', 'v1.marketing.integral.StoreIntegralOrder/order_info')->option(['real_name' => '权益值商城订单详情数据']);
+        //修改权益值商品订单备注信息
+        Route::put('integral/order/remark/:id', 'v1.marketing.integral.StoreIntegralOrder/remark')->option(['real_name' => '修改权益值商品订单备注信息']);
+        //获取权益值订单状态
+        Route::get('integral/order/status/:id', 'v1.marketing.integral.StoreIntegralOrder/status')->option(['real_name' => '获取权益值订单状态']);
+        //删除权益值订单
+        Route::delete('integral/order/del/:id', 'v1.marketing.integral.StoreIntegralOrder/del')->option(['real_name' => '删除权益值订单']);
+        //权益值订单发送货
+        Route::put('integral/order/delivery/:id', 'v1.marketing.integral.StoreIntegralOrder/update_delivery')->option(['real_name' => '权益值订单发送货']);
+        //获取权益值订单配送信息表单
+        Route::get('integral/order/distribution/:id', 'v1.marketing.integral.StoreIntegralOrder/distribution')->option(['real_name' => '获取权益值订单配送信息表单']);
+        //修改权益值订单配送信息
+        Route::put('integral/order/distribution/:id', 'v1.marketing.integral.StoreIntegralOrder/update_distribution')->option(['real_name' => '修改权益值订单配送信息']);
+        //权益值订单确认收货
+        Route::put('integral/order/take/:id', 'v1.marketing.integral.StoreIntegralOrder/take_delivery')->option(['real_name' => '权益值订单确认收货']);
+        //权益值订单获取物流公司
+        Route::get('integral/order/express_list', 'v1.marketing.integral.StoreIntegralOrder/express')->option(['real_name' => '权益值订单获取物流公司']);
+        //权益值订单快递公司电子面单模版
+        Route::get('integral/order/express/temp', 'v1.marketing.integral.StoreIntegralOrder/express_temp')->option(['real_name' => '权益值订单快递公司电子面单模版']);
+        //权益值订单获取物流信息
+        Route::get('integral/order/express/:id', 'v1.marketing.integral.StoreIntegralOrder/get_express')->option(['real_name' => '权益值订单获取物流信息']);
+        //打印权益值订单
+        Route::get('integral/order/print/:id', 'v1.marketing.integral.StoreIntegralOrder/order_print')->option(['real_name' => '打印权益值订单']);
+        //权益值订单列表获取配送员
+        Route::get('integral/order/delivery/list', 'v1.order.DeliveryService/get_delivery_list')->option(['real_name' => '权益值订单列表获取配送员']);
+        //权益值订单获取面单默认配置信息
+        Route::get('integral/order/sheet_info', 'v1.marketing.integral.StoreIntegralOrder/getDeliveryInfo')->option(['real_name' => '权益值订单获取面单默认配置信息']);
+        //权益值记录
+        Route::get('point_record', 'v1.marketing.integral.StorePointRecord/pointRecord')->option(['real_name' => '权益值记录列表']);
+        Route::post('point_record/remark/:id', 'v1.marketing.integral.StorePointRecord/pointRecordRemark')->option(['real_name' => '权益值记录列表备注']);
+        Route::get('point/get_basic', 'v1.marketing.integral.StorePointRecord/getBasic')->option(['real_name' => '权益值统计基本信息']);
+        Route::get('point/get_trend', 'v1.marketing.integral.StorePointRecord/getTrend')->option(['real_name' => '权益值统计趋势图']);
+        //权益值来源统计
+        Route::get('point/get_channel', 'v1.marketing.integral.StorePointRecord/getChannel')->option(['real_name' => '权益值来源统计']);
+        //权益值消耗统计
+        Route::get('point/get_type', 'v1.marketing.integral.StorePointRecord/getType')->option(['real_name' => '权益值消耗统计']);
+    })->option(['parent' => 'marketing', 'cate_name' => '权益值活动']);
 
     /** 抽奖活动 */
     Route::group(function () {

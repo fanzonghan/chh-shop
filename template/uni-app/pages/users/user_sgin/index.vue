@@ -96,7 +96,7 @@
 						<image src="../static/signH.png"></image>
 					</view>
 					<view class="state">{{ $t(`签到成功`) }}</view>
-					<view class="integral">{{ $t(`获得`) }}{{ integral }}{{ $t(`积分`) }}</view>
+					<view class="integral">{{ $t(`获得`) }}{{ integral }}{{ $t(`权益值`) }}</view>
 					<view class="signTipBnt" @click="close">{{ $t(`好的`) }}</view>
 				</view>
 			</view>

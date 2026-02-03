@@ -14,7 +14,7 @@
     export default {
         name: 'c_points_mall',
         componentsName: 'points_mall',
-        cname: '积分商城',
+        cname: '权益值商城',
         props: {
             activeIndex: {
                 type: null

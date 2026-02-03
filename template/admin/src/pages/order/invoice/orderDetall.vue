@@ -35,7 +35,7 @@
         </div>
         <div class="msg-item">
           <div class="item"><span>会员商品优惠：</span>{{ orderDetail.orderInfo.vip_true_price || 0.0 }}</div>
-          <div class="item"><span>积分抵扣：</span>{{ orderDetail.orderInfo.deduction_price || 0.0 }}</div>
+          <div class="item"><span>权益值抵扣：</span>{{ orderDetail.orderInfo.deduction_price || 0.0 }}</div>
         </div>
         <div class="msg-item">
           <div class="item"><span>实际支付：</span>{{ orderDetail.orderInfo.pay_price }}</div>

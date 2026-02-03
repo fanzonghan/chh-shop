@@ -49,11 +49,11 @@ class OtherOrderJob extends BaseJobs
             Log::error('计算节省金额,失败原因:' . $e->getMessage());
         }
 
-        //收银订单赠送积分
+        //收银订单赠送权益值
         try {
             $this->sendMemberIntegral($order);
         } catch (\Throwable $e) {
-            Log::error('消费积分返还失败,失败原因:' . $e->getMessage());
+            Log::error('消费权益值返还失败,失败原因:' . $e->getMessage());
         }
         return true;
     }
@@ -82,7 +82,7 @@ class OtherOrderJob extends BaseJobs
         }
     }
 
-    /** 线下付款奖励积分
+    /** 线下付款奖励权益值
      * @param $order
      * @return bool
      */
@@ -97,7 +97,7 @@ class OtherOrderJob extends BaseJobs
             $userInfo = $userService->getUserInfo($order['uid']);
             if (!$userInfo) return false;
             if ($userInfo['is_money_level'] > 0) {
-                //看是否开启消费返积分翻倍奖励
+                //看是否开启消费返权益值翻倍奖励
                 /** @var MemberCardServices $memberCardService */
                 $memberCardService = app()->make(MemberCardServices::class);
                 $integral_rule_number = $memberCardService->isOpenMemberCard('integral');

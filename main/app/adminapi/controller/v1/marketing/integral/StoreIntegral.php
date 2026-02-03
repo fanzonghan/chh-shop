@@ -15,7 +15,7 @@ use app\services\activity\integral\StoreIntegralServices;
 use think\facade\App;
 
 /**
- * 积分商城管理
+ * 权益值商城管理
  * Class StoreCombination
  * @package app\admin\controller\store
  */
@@ -33,7 +33,7 @@ class StoreIntegral extends AuthController
     }
 
     /**
-     * 积分商品列表
+     * 权益值商品列表
      * @return mixed
      */
     public function index()

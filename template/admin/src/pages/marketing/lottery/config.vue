@@ -3,7 +3,7 @@
     <pages-header ref="pageHeader" :title="$route.meta.title"></pages-header>
     <el-card :bordered="false" shadow="never" class="mt16">
       <el-form :model="formData" label-width="100px">
-        <el-form-item label="积分抽奖：">
+        <el-form-item label="权益值抽奖：">
           <el-select v-model="formData.point" clearable>
             <el-option v-for="(item, j) in list.point" :value="item.id" :key="item.id" :label="item.name"></el-option>
           </el-select>
@@ -41,12 +41,12 @@ export default {
       formData: {
         evaluate: '', // 评价支付
         pay: '', // 支付
-        point: '', // 积分
+        point: '', // 权益值
       },
       list: {
         evaluate: [], // 评价支付
         pay: [], // 支付
-        point: [], // 积分
+        point: [], // 权益值
       },
     };
   },

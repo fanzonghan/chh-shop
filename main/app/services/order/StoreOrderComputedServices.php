@@ -113,7 +113,7 @@ class StoreOrderComputedServices extends BaseServices
         if (!$isActivity) {
             //使用优惠劵
             [$payPrice, $couponPrice] = $this->useCouponId($couponId, $uid, $cartInfo, $payPrice, $isCreate);
-            //使用积分
+            //使用权益值
             [$payPrice, $deductionPrice, $usedIntegral, $SurplusIntegral] = $this->useIntegral($useIntegral, $userInfo, $payPrice, $other);
         }
 
@@ -216,7 +216,7 @@ class StoreOrderComputedServices extends BaseServices
     }
 
     /**
-     * 使用积分
+     * 使用权益值
      * @param $useIntegral
      * @param $userInfo
      * @param $payPrice
@@ -227,12 +227,12 @@ class StoreOrderComputedServices extends BaseServices
     {
         /** @var UserBillServices $userBillServices */
         $userBillServices = app()->make(UserBillServices::class);
-        // 可用积分
+        // 可用权益值
         $usable = bcsub((string)$userInfo['integral'], (string)$userBillServices->getBillSum(['uid' => $userInfo['uid'], 'is_frozen' => 1]), 0);
 
         $SurplusIntegral = $usable;
         if ($useIntegral && $userInfo['integral'] > 0 && $other['integralRatio'] > 0) {
-            //积分抵扣上限
+            //权益值抵扣上限
             $integralMaxNum = sys_config('integral_max_num', 200);
             if ($integralMaxNum > 0 && $usable > $integralMaxNum) {
                 $integral = $integralMaxNum;

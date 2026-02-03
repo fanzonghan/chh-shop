@@ -83,7 +83,7 @@ class OrderCreateAfterJob extends BaseJobs
             }
             $createService->update(['id' => $orderId], $orderData);
         } catch (\Throwable $e) {
-            Log::error('计算订单实际优惠、积分、邮费、佣金失败，原因：' . $e->getMessage());
+            Log::error('计算订单实际优惠、权益值、邮费、佣金失败，原因：' . $e->getMessage());
         }
 
         return true;

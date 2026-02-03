@@ -164,15 +164,6 @@ class AgentLevelServices extends BaseServices
         if (!$list) {
             return false;
         }
-        if (!$uids) {
-            //获取上级uid ｜｜ 开启自购返回自己uid
-            $spread_uid = $userServices->getSpreadUid($uid, $userInfo);
-            $two_spread_uid = 0;
-            if ($spread_uid > 0 && $one_user_info = $userServices->getUserInfo($spread_uid)) {
-                $two_spread_uid = $userServices->getSpreadUid($spread_uid, $one_user_info, false);
-            }
-            $uids = array_unique([$uid, $spread_uid, $two_spread_uid]);
-        }
         foreach ($uids as $uid) {
             if ($uid <= 0) continue;
             if ($uid != $userInfo['uid']) {
@@ -257,16 +248,18 @@ class AgentLevelServices extends BaseServices
         $field[] = Form::input('name', '等级名称')->maxlength(8)->col(24);
         $field[] = Form::number('grade', '等级', 0)->min(0)->precision(0);
         $field[] = Form::frameImage('image', '背景图', Url::buildUrl(config('app.admin_prefix', 'admin') . '/widget.images/index', array('fodder' => 'image')))->icon('el-icon-picture-outline')->width('950px')->height('560px')->props(['footer' => false]);
-        $field[] = Form::number('one_brokerage_percent', '一级佣金比例', 0)->appendRule('suffix', [
-            'type' => 'div',
-            'class' => 'tips-info',
-            'domProps' => ['innerHTML' => '到达该等级之后，一级分佣按照此比例计算佣金']
-        ])->max(100)->precision(2);
-        $field[] = Form::number('two_brokerage_percent', '二级佣金比例', 0)->appendRule('suffix', [
-            'type' => 'div',
-            'class' => 'tips-info',
-            'domProps' => ['innerHTML' => '到达该等级之后，二级分佣按照此比例计算佣金']
-        ])->min(0)->max(100)->precision(2);
+//        $field[] = Form::number('one_brokerage_percent', '一级佣金比例', 0)->appendRule('suffix', [
+//            'type' => 'div',
+//            'class' => 'tips-info',
+//            'domProps' => ['innerHTML' => '到达该等级之后，一级分佣按照此比例计算佣金']
+//        ])->max(100)->precision(2);
+//        $field[] = Form::number('two_brokerage_percent', '二级佣金比例', 0)->appendRule('suffix', [
+//            'type' => 'div',
+//            'class' => 'tips-info',
+//            'domProps' => ['innerHTML' => '到达该等级之后，二级分佣按照此比例计算佣金']
+//        ])->min(0)->max(100)->precision(2);
+        $field[] = Form::textarea('desc', '任务描述');
+
         $field[] = Form::radio('status', '是否显示', 1)->options([['value' => 1, 'label' => '显示'], ['value' => 0, 'label' => '隐藏']]);
         return create_form('添加分销员等级', $field, Url::buildUrl('/agent/level'), 'POST');
     }
@@ -287,16 +280,18 @@ class AgentLevelServices extends BaseServices
         $field[] = Form::input('name', '等级名称', $levelInfo['name'])->maxlength(8)->col(24);
         $field[] = Form::number('grade', '等级', $levelInfo['grade'])->min(0)->precision(0);
         $field[] = Form::frameImage('image', '背景图', Url::buildUrl(config('app.admin_prefix', 'admin') . '/widget.images/index', array('fodder' => 'image')), $levelInfo['image'])->icon('el-icon-picture-outline')->width('950px')->height('560px')->props(['footer' => false]);
-        $field[] = Form::number('one_brokerage_percent', '一级佣金比例', $levelInfo['one_brokerage_percent'])->appendRule('suffix', [
-            'type' => 'div',
-            'class' => 'tips-info',
-            'domProps' => ['innerHTML' => '到达该等级之后，一级分佣按照此比例计算佣金']
-        ])->max(100)->precision(2);
-        $field[] = Form::number('two_brokerage_percent', '二级佣金比例', $levelInfo['two_brokerage_percent'])->appendRule('suffix', [
-            'type' => 'div',
-            'class' => 'tips-info',
-            'domProps' => ['innerHTML' => '到达该等级之后，二级分佣按照此比例计算佣金']
-        ])->min(0)->max(100)->precision(2);
+//        $field[] = Form::number('one_brokerage_percent', '一级佣金比例', $levelInfo['one_brokerage_percent'])->appendRule('suffix', [
+//            'type' => 'div',
+//            'class' => 'tips-info',
+//            'domProps' => ['innerHTML' => '到达该等级之后，一级分佣按照此比例计算佣金']
+//        ])->max(100)->precision(2);
+//        $field[] = Form::number('two_brokerage_percent', '二级佣金比例', $levelInfo['two_brokerage_percent'])->appendRule('suffix', [
+//            'type' => 'div',
+//            'class' => 'tips-info',
+//            'domProps' => ['innerHTML' => '到达该等级之后，二级分佣按照此比例计算佣金']
+//        ])->min(0)->max(100)->precision(2);
+        $field[] = Form::textarea('desc', '任务描述',$levelInfo['desc']);
+
         $field[] = Form::radio('status', '是否显示', $levelInfo['status'])->options([['value' => 1, 'label' => '显示'], ['value' => 0, 'label' => '隐藏']]);
 
         return create_form('编辑分销员等级', $field, Url::buildUrl('/agent/level/' . $id), 'PUT');

@@ -230,20 +230,20 @@ export function getBargainPosterData(id) {
 }
 
 /**
- * 获取积分订单详细信息
+ * 获取权益值订单详细信息
  */
 export function integralOrderConfirm(data) {
 	return request.post('store_integral/order/confirm', data);
 }
 
 /**
- * 获取积分订单创建
+ * 获取权益值订单创建
  */
 export function integralOrderCreate(data) {
 	return request.post('store_integral/order/create', data);
 }
 /**
- * 获取积分订单详情
+ * 获取权益值订单详情
  * @param string cartId
  */
 export function integralOrderDetails(order) {
@@ -251,7 +251,7 @@ export function integralOrderDetails(order) {
 }
 
 /**
- * 积分产品详情
+ * 权益值产品详情
  * @param int id
  * 
  */
@@ -262,7 +262,7 @@ export function getIntegralProductDetail(id) {
 }
 
 /**
- * 积分商城商品列表
+ * 权益值商城商品列表
  * @param object data
  */
 export function getStoreIntegralList(data) {
@@ -272,7 +272,7 @@ export function getStoreIntegralList(data) {
 }
 
 /**
- * 积分兑换列表
+ * 权益值兑换列表
  * @param object data
  */
 export function getIntegralOrderList(data) {
@@ -280,14 +280,14 @@ export function getIntegralOrderList(data) {
 }
 
 /**
- * 积分兑换详情
+ * 权益值兑换详情
  */
 export function getLogisticsDetails(orderId) {
 	return request.get(`store_integral/order/express/${orderId}`);
 }
 
 /**
- * 积分兑换订单确认收货
+ * 权益值兑换订单确认收货
  * @param object data
  */
 export function orderTake(data) {
@@ -295,7 +295,7 @@ export function orderTake(data) {
 }
 
 /**
- * 积分兑换订单删除
+ * 权益值兑换订单删除
  * @param object data
  */
 export function orderDel(data) {

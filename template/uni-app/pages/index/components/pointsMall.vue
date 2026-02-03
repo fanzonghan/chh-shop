@@ -16,7 +16,7 @@
 							<easy-loadimage mode="widthFix" :image-src="item.image" width="224rpx" height="224rpx" :borderRadius="goodsImage"></easy-loadimage>
 							<view class="price-box acea-row row-middle" :style="[priceBoxStyle]">
 								<view class="point">{{ item.price }}</view>
-								<view class="">{{ $t(`积分`) }}</view>
+								<view class="">{{ $t(`权益值`) }}</view>
 							</view>
 						</view>
 					</scroll-view>

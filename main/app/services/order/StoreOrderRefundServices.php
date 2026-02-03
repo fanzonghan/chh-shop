@@ -111,7 +111,7 @@ class StoreOrderRefundServices extends BaseServices
     }
 
     /**
-     * 同意退款：拆分退款单、退积分、佣金等
+     * 同意退款：拆分退款单、退权益值、佣金等
      * @param int $id
      * @param array $refundData
      * @return bool
@@ -141,7 +141,7 @@ class StoreOrderRefundServices extends BaseServices
             [$splitOrderInfo, $otherOrder] = $storeOrderSplitServices->equalSplit($orderRefundInfo['store_order_id'], $cart_ids, $orderInfo);
 
 
-            //回退积分和优惠卷
+            //回退权益值和优惠卷
             if (!$this->integralAndCouponBack($splitOrderInfo)) {
                 throw new AdminException(400489);
             }
@@ -336,7 +336,7 @@ class StoreOrderRefundServices extends BaseServices
     {
         return $this->transaction(function () use ($type, $order, $refundData) {
 
-            //回退积分和优惠卷
+            //回退权益值和优惠卷
             if (!$this->integralAndCouponBack($order)) {
                 throw new AdminException(400489);
             }
@@ -445,7 +445,7 @@ class StoreOrderRefundServices extends BaseServices
     }
 
     /**
-     * 回退积分和优惠卷
+     * 回退权益值和优惠卷
      * @param $order
      * @param string $type
      * @return bool
@@ -471,19 +471,19 @@ class StoreOrderRefundServices extends BaseServices
             }
         }
 
-        //回退积分
+        //回退权益值
         $order = $this->regressionIntegral($order);
         $statusService->save([
             'oid' => $order['id'],
             'change_type' => 'integral_back',
-            'change_message' => '商品退积分',
+            'change_message' => '商品退权益值',
             'change_time' => time()
         ]);
         return $res && $order->save();
     }
 
     /**
-     * 回退使用积分和赠送积分
+     * 回退使用权益值和赠送权益值
      * @param $order
      * @return bool
      */
@@ -502,7 +502,7 @@ class StoreOrderRefundServices extends BaseServices
         }
 
         $res1 = $res2 = $res3 = $res4 = true;
-        //订单赠送积分
+        //订单赠送权益值
         /** @var UserBillServices $userBillServices */
         $userBillServices = app()->make(UserBillServices::class);
         $order_gain = $userBillServices->sum([
@@ -521,28 +521,28 @@ class StoreOrderRefundServices extends BaseServices
 
         $give_integral = $order_gain + $product_gain;
         if ($give_integral) {
-            //判断订单是否已经回退积分
+            //判断订单是否已经回退权益值
             $count = $userBillServices->count(['category' => 'integral', 'type' => 'integral_refund', 'link_id' => $order['id']]);
             if (!$count) {
                 if ($integral > $give_integral) {
                     $res1 = $userServices->bcDec($order['uid'], 'integral', $give_integral);
-                    //记录赠送积分收回
+                    //记录赠送权益值收回
                     $integral = $integral - $give_integral;
                 } else {
                     $res1 = $userServices->update($order['uid'], ['integral' => 0]);
-                    //记录赠送积分收回
+                    //记录赠送权益值收回
                     $integral = 0;
                 }
                 $res2 = $userBillServices->income('integral_refund', $order['uid'], $give_integral, $integral, $order['id']);
-                //清除积分冻结
+                //清除权益值冻结
                 $userBillServices->update(['link_id' => $order['id']], ['frozen_time' => 0]);
             }
         }
-        //返还下单使用积分
+        //返还下单使用权益值
         $use_integral = $order['use_integral'];
         if ($use_integral > 0) {
             $res3 = $userServices->bcInc($order['uid'], 'integral', $use_integral);
-            //记录下单使用积分还回
+            //记录下单使用权益值还回
             $res4 = $userBillServices->income('pay_product_integral_back', $order['uid'], (int)$use_integral, $integral + $use_integral, $order['id']);
         }
         if (!($res1 && $res2 && $res3 && $res4)) {
@@ -749,7 +749,7 @@ class StoreOrderRefundServices extends BaseServices
 
 
     /**
-     * 退积分表单创建
+     * 退权益值表单创建
      * @param int $id
      * @return array
      * @throws \FormBuilder\Exception\FormBuilderException
@@ -763,14 +763,14 @@ class StoreOrderRefundServices extends BaseServices
         if (!$orderInfo->paid)
             throw new AdminException(400497);
         $f[] = Form::input('order_id', '退款单号', $orderInfo->getData('order_id'))->disabled(1);
-        $f[] = Form::number('use_integral', '使用的积分', (float)$orderInfo->getData('use_integral'))->min(0)->disabled(1);
-        $f[] = Form::number('use_integrals', '已退积分', (float)$orderInfo->getData('back_integral'))->min(0)->disabled(1);
-        $f[] = Form::number('back_integral', '可退积分', (float)bcsub($orderInfo->getData('use_integral'), $orderInfo->getData('back_integral')))->min(0)->precision(0)->required('请输入可退积分');
-        return create_form('退积分', $f, $this->url('/order/refund_integral/' . $id), 'PUT');
+        $f[] = Form::number('use_integral', '使用的权益值', (float)$orderInfo->getData('use_integral'))->min(0)->disabled(1);
+        $f[] = Form::number('use_integrals', '已退权益值', (float)$orderInfo->getData('back_integral'))->min(0)->disabled(1);
+        $f[] = Form::number('back_integral', '可退权益值', (float)bcsub($orderInfo->getData('use_integral'), $orderInfo->getData('back_integral')))->min(0)->precision(0)->required('请输入可退权益值');
+        return create_form('退权益值', $f, $this->url('/order/refund_integral/' . $id), 'PUT');
     }
 
     /**
-     * 单独退积分处理
+     * 单独退权益值处理
      * @param $orderInfo
      * @param $back_integral
      */
@@ -789,7 +789,7 @@ class StoreOrderRefundServices extends BaseServices
             $res3 = $statusService->save([
                 'oid' => $orderInfo['id'],
                 'change_type' => 'integral_back',
-                'change_message' => '商品退积分:' . $back_integral,
+                'change_message' => '商品退权益值:' . $back_integral,
                 'change_time' => time()
             ]);
             $res4 = $orderInfo->save();

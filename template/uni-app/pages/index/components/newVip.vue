@@ -46,7 +46,7 @@
 				<image :src="`${imgHost}/statics/images/newVip2.png`" class="image"></image>
 				<view class="text">
 					<view class="info acea-row row-middle">
-						{{ $t(`新用户注册领积分`) }}
+						{{ $t(`新用户注册领权益值`) }}
 						<view class="red" :style="[bonusRedStyle]">
 							<view class="inner acea-row row-middle">
 								<image :src="`${imgHost}/statics/images/newVip3.png`" class="image"></image>
@@ -54,7 +54,7 @@
 							</view>
 						</view>
 					</view>
-					<view class="">{{ $t(`新用户注册后即可获得积分`) }}</view>
+					<view class="">{{ $t(`新用户注册后即可获得权益值`) }}</view>
 				</view>
 				<view class="button" :style="[buttonStyle]" @click="goNewList">{{ $t(`去看看`) }}</view>
 			</view>
@@ -68,7 +68,7 @@
 				<view class="inner acea-row row-middle">
 					<image :src="`${imgHost}/statics/images/newVip3.png`" class="image"></image>
 					{{ $t(`新用户注册即可`) }}
-					<text class="red" :style="[bonusRedStyle]">{{ $t(`赠送积分`) }}</text>
+					<text class="red" :style="[bonusRedStyle]">{{ $t(`赠送权益值`) }}</text>
 				</view>
 			</view>
 			<view class="coupon" v-if="dataConfig.checkboxInfo.type.includes(1) && couponList.length">

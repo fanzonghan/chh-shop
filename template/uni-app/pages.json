@@ -1,4 +1,10 @@
 {
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"fui-(.*)": "@/components/firstui/fui-$1/fui-$1.vue"
+		}
+	},
 	"pages": [ //pages数组中第一项表示应用启动页
 		{
 			"path": "pages/guide/index",
@@ -624,7 +630,7 @@
 				{
 					"path": "user_integral/index",
 					"style": {
-						"navigationBarTitleText": "积分详情"
+						"navigationBarTitleText": "权益值详情"
 
 							// #ifdef MP
 							,
@@ -1007,13 +1013,7 @@
 					}
 				}
 				// #endif
-			],
-			"plugins": {
-				"live-player-plugin": {
-					"version": "1.3.5",
-					"provider": "wx2b03c6e691cd7370"
-				}
-			}
+			]
 		},
 		{
 			"root": "pages/goods_details",
@@ -1467,7 +1467,7 @@
 					"style": {
 						"navigationBarTextStyle": "white",
 						"navigationBarBackgroundColor": "#333333",
-						"navigationBarTitleText": "积分商城",
+						"navigationBarTitleText": "权益值商城",
 						"app-plus": {
 							// #ifdef APP-PLUS
 							"titleNView": {
@@ -1528,7 +1528,7 @@
 				{
 					"path": "integral_order",
 					"style": {
-						"navigationBarTitleText": "积分订单",
+						"navigationBarTitleText": "权益值订单",
 						"app-plus": {
 							// #ifdef APP-PLUS
 							"titleNView": {

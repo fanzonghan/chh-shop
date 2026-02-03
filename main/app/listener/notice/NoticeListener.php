@@ -377,7 +377,7 @@ class NoticeListener implements ListenerInterface
     }
 
     /**
-     * 积分到账给用户发信息
+     * 权益值到账给用户发信息
      * @param $data
      * @return bool
      * @author: 吴汐

@@ -161,7 +161,7 @@ class User extends AuthController
     }
 
     /**
-     * 赠送积分
+     * 赠送权益值
      * @param int $uid
      * @return mixed
      * @throws \think\Exception
@@ -205,7 +205,7 @@ class User extends AuthController
     }
 
     /**
-     * 修改积分
+     * 修改权益值
      * @param $uid
      * @return \think\Response
      * @author wuhaotian

@@ -2,7 +2,7 @@
   <div>
     <pages-header
       ref="pageHeader"
-      :title="$route.params.id ? '编辑积分商品' : '添加积分商品'"
+      :title="$route.params.id ? '编辑权益值商品' : '添加权益值商品'"
       :backUrl="$routeProStr + '/marketing/store_integral/index'"
     ></pages-header>
     <el-card :bordered="false" shadow="never" class="mt16">
@@ -325,7 +325,7 @@ export default {
         UEDITOR_HOME_URL: '/UEditor/',
         serverUrl: '',
       },
-      stepList: ['选择积分商品', '填写基础信息', '修改商品详情'],
+      stepList: ['选择权益值商品', '填写基础信息', '修改商品详情'],
       modals: false,
       modal_loading: false,
       images: [],
@@ -381,13 +381,13 @@ export default {
           },
         ],
         title: [{ required: true, message: '请输入商品标题', trigger: 'blur' }],
-        info: [{ required: true, message: '请输入积分活动简介', trigger: 'blur' }],
+        info: [{ required: true, message: '请输入权益值活动简介', trigger: 'blur' }],
         unit_name: [{ required: true, message: '请输入单位', trigger: 'blur' }],
         price: [
           {
             required: true,
             type: 'number',
-            message: '请输入兑换积分',
+            message: '请输入兑换权益值',
             trigger: 'blur',
           },
         ],

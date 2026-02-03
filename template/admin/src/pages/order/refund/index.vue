@@ -211,7 +211,7 @@
         />
       </div>
     </el-card>
-    <!-- 编辑 退款 退积分 不退款-->
+    <!-- 编辑 退款 退权益值 不退款-->
     <edit-from ref="edits" :FromData="FromData" @submitFail="submitFail"></edit-from>
     <!-- 会员详情-->
     <user-details ref="userDetails"></user-details>
@@ -420,7 +420,7 @@ export default {
         });
       }
     },
-    // 获取退积分表单数据
+    // 获取退权益值表单数据
     getRefundIntegral(id) {
       refundIntegral(id)
         .then(async (res) => {

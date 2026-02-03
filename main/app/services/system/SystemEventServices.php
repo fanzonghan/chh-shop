@@ -87,7 +87,7 @@ class SystemEventServices extends BaseServices
 //                'value' => 'user_sign',
 //                'data' => [
 //                    'uid' => '用户uid',
-//                    'sign_point' => '签到积分',
+//                    'sign_point' => '签到权益值',
 //                    'sign_exp' => '签到经验',
 //                    'sign_time' => '签到时间',
 //                ]
@@ -171,7 +171,7 @@ class SystemEventServices extends BaseServices
 //                    'total_num' => '商品总数',
 //                    'pay_price' => '支付金额',
 //                    'pay_postage' => '支付邮费',
-//                    'deduction_price' => '积分抵扣金额',
+//                    'deduction_price' => '权益值抵扣金额',
 //                    'coupon_price' => '优惠券抵扣金额',
 //                    'store_name' => '商品名称',
 //                    'add_time' => '订单创建时间',
@@ -189,7 +189,7 @@ class SystemEventServices extends BaseServices
 //                    'user_address' => '用户地址',
 //                    'total_num' => '商品总数',
 //                    'pay_price' => '支付金额',
-//                    'deduction_price' => '积分抵扣金额',
+//                    'deduction_price' => '权益值抵扣金额',
 //                    'coupon_price' => '优惠券抵扣金额',
 //                    'cancel_time' => '订单取消时间',
 //                ]
@@ -207,7 +207,7 @@ class SystemEventServices extends BaseServices
 //                    'total_num' => '商品总数',
 //                    'pay_price' => '支付金额',
 //                    'pay_postage' => '支付邮费',
-//                    'deduction_price' => '积分抵扣金额',
+//                    'deduction_price' => '权益值抵扣金额',
 //                    'coupon_price' => '优惠券抵扣金额',
 //                    'store_name' => '商品名称',
 //                    'add_time' => '订单创建时间',
@@ -226,7 +226,7 @@ class SystemEventServices extends BaseServices
 //                    'total_num' => '商品总数',
 //                    'pay_price' => '支付金额',
 //                    'pay_postage' => '支付邮费',
-//                    'deduction_price' => '积分抵扣金额',
+//                    'deduction_price' => '权益值抵扣金额',
 //                    'coupon_price' => '优惠券抵扣金额',
 //                    'store_name' => '商品名称',
 //                    'add_time' => '订单创建时间',
@@ -274,15 +274,15 @@ class SystemEventServices extends BaseServices
 //                ]
 //            ],
 //            [
-//                'label' => '积分到账',
+//                'label' => '权益值到账',
 //                'value' => 'order_point',
 //                'data' => [
 //                    'uid' => '用户uid',
 //                    'order_id' => '订单order_id',
 //                    'phone' => '用户电话',
 //                    'storeTitle' => '商品名称',
-//                    'give_integral' => '赠送积分',
-//                    'integral' => '总积分',
+//                    'give_integral' => '赠送权益值',
+//                    'integral' => '总权益值',
 //                    'add_time' => '赠送时间',
 //                ]
 //            ],
@@ -364,7 +364,7 @@ class SystemEventServices extends BaseServices
 //                    'uid' => '用户uid',
 //                    'order_id' => '订单order_id',
 //                    'pay_price' => '修改后订单金额',
-//                    'gain_integral' => '修改后订单赠送积分',
+//                    'gain_integral' => '修改后订单赠送权益值',
 //                    'change_time' => '修改时间',
 //                ]
 //            ],

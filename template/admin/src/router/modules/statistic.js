@@ -59,7 +59,7 @@ export default {
       name: `${pre}integral`,
       meta: {
         // auth: ['setting-system-role'],
-        title: '积分统计',
+        title: '权益值统计',
       },
       component: () => import('@/pages/statistic/integral/index'),
     },

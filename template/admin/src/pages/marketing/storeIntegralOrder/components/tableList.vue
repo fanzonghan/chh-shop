@@ -27,11 +27,11 @@
               <img v-lazy="scope.row.image" />
             </div>
             <span class="tabBox_tit"> {{ scope.row.store_name + ' | ' }}{{ scope.row.suk ? scope.row.suk : '' }} </span>
-            <span class="tabBox_pice">{{ '积分' + scope.row.total_price + ' x ' + scope.row.total_num }}</span>
+            <span class="tabBox_pice">{{ '权益值' + scope.row.total_price + ' x ' + scope.row.total_num }}</span>
           </div>
         </template>
       </el-table-column>
-      <el-table-column label="兑换积分" min-width="100">
+      <el-table-column label="兑换权益值" min-width="100">
         <template slot-scope="scope">
           <span>{{ scope.row.total_price }}</span>
         </template>
@@ -81,7 +81,7 @@
         @pagination="getList"
       />
     </div>
-    <!-- 编辑 退款 退积分 不退款-->
+    <!-- 编辑 退款 退权益值 不退款-->
     <edit-from ref="edits" :FromData="FromData" @submitFail="submitFail"></edit-from>
     <!-- 会员详情-->
     <user-details ref="userDetails"></user-details>

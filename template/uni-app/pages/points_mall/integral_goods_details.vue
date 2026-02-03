@@ -45,7 +45,7 @@
 						<view class="share acea-row row-between row-bottom">
 							<view class="money font-color">
 								<image src="./static/my-point.png" mode=""></image>
-								<text class="num" v-text="storeInfo.price || 0"></text>{{$t(`积分`)}}
+								<text class="num" v-text="storeInfo.price || 0"></text>{{$t(`权益值`)}}
 							</view>
 							<view></view>
 						</view>

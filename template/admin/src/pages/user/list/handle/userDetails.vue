@@ -86,7 +86,7 @@ export default {
       theme2: 'light',
       list: [
         { val: 'order', label: '消费记录' },
-        { val: 'integral', label: '积分明细' },
+        { val: 'integral', label: '权益值明细' },
         { val: 'sign', label: '签到记录' },
         { val: 'coupon', label: '持有优惠券' },
         { val: 'balance_change', label: '余额变动' },
@@ -203,12 +203,12 @@ export default {
                     minWidth: 120,
                   },
                   {
-                    title: '积分变化',
+                    title: '权益值变化',
                     slot: 'number',
                     minWidth: 120,
                   },
                   {
-                    title: '变化后积分',
+                    title: '变化后权益值',
                     key: 'balance',
                     minWidth: 120,
                   },
@@ -232,7 +232,7 @@ export default {
                     minWidth: 120,
                   },
                   {
-                    title: '获得积分',
+                    title: '获得权益值',
                     key: 'number',
                     minWidth: 120,
                   },

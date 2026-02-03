@@ -62,7 +62,7 @@ class SystemSignRewardServices extends BaseServices
         if ($info) $type = $info['type'];
         $form[] = Form::hidden('type', $type);
         $form[] = Form::number('days', $type == 1 ? '累积签到天数' : '连续签到天数', (int)($info['days'] ?? 0))->max(sys_config('sign_mode') == 1 ? 7 : 30);
-        $form[] = Form::number('point', '赠送积分', (int)($info['point'] ?? 0))->controls(false)->max(999)->min(0);
+        $form[] = Form::number('point', '赠送权益值', (int)($info['point'] ?? 0))->controls(false)->max(999)->min(0);
         $form[] = Form::number('exp', '赠送经验', (int)($info['exp'] ?? 0))->controls(false)->max(999)->min(0);
         return create_form($type == 1 ? '累积签到奖励' : '连续签到奖励', $form, Url::buildUrl('/marketing/sign/save_rewards/' . $id), 'POST');
     }

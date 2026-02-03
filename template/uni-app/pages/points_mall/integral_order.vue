@@ -37,7 +37,7 @@
 							<view class='attr line1' v-if="cartInfo.suk">{{cartInfo.suk}}
 							</view>
 							<view class='money font-color'>
-								{{cartInfo.price}} {{$t(`积分`)}}
+								{{cartInfo.price}} {{$t(`权益值`)}}
 							</view>
 						</view>
 					</view>
@@ -45,7 +45,7 @@
 			</view>
 			<view class='wrapper'>
 				<view class='item acea-row row-between-wrapper'>
-					<view>{{$t(`可用积分`)}}</view>
+					<view>{{$t(`可用权益值`)}}</view>
 					<view class='discount'>{{resData.integral}}
 					</view>
 				</view>
@@ -69,7 +69,7 @@
 			<view style='height:120rpx;'></view>
 			<view class='footer acea-row row-between-wrapper'>
 				<view>{{$t(`合计`)}}：
-					<text class='font-color'>{{resData.total_price || 0}}{{$t(`积分`)}}</text>
+					<text class='font-color'>{{resData.total_price || 0}}{{$t(`权益值`)}}</text>
 				</view>
 				<view class='settlement' style='z-index:100' @tap="goPay">{{$t(`立即兑换`)}}</view>
 			</view>
@@ -184,10 +184,10 @@
 				seckillId: 0,
 				userInfo: {}, //用户信息
 				coupon_price: 0, //优惠券抵扣金额
-				useIntegral: false, //是否使用积分
-				integral_price: 0, //积分抵扣金额
+				useIntegral: false, //是否使用权益值
+				integral_price: 0, //权益值抵扣金额
 				integral: 0,
-				ChangePrice: 0, //使用积分抵扣变动后的金额
+				ChangePrice: 0, //使用权益值抵扣变动后的金额
 				formIds: [], //收集formid
 				status: 0,
 				is_address: false,
@@ -326,7 +326,7 @@
 				}
 				if (parseFloat(that.resData.integral) < parseFloat(that.cartInfo.price))
 					return that.$util.Tips({
-						title: that.$t(`可用积分不足！`)
+						title: that.$t(`可用权益值不足！`)
 					});
 				let data = {
 					addressId: that.addressId,

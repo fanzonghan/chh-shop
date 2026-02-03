@@ -54,7 +54,7 @@ export default {
         { label: '隐私协议', value: '3' },
         { label: '用户协议', value: '4' },
         { label: '注销协议', value: '5' },
-        { label: '积分协议', value: '6' },
+        { label: '权益值协议', value: '6' },
         { label: '分销协议', value: '8' },
       ],
       ueConfig: {

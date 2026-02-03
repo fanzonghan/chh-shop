@@ -62,7 +62,7 @@
             <div>{{ scope.row.add_time }}</div>
           </template>
         </el-table-column>
-        <el-table-column label="交易积分" min-width="80">
+        <el-table-column label="交易权益值" min-width="80">
           <template slot-scope="scope">
             <div v-if="scope.row.pm" class="z-price">+ {{ scope.row.number }}</div>
             <div v-else class="f-price">- {{ scope.row.number }}</div>

@@ -446,7 +446,7 @@ export default {
           {
             required: true,
             type: 'number',
-            message: '请输入赠送积分',
+            message: '请输入赠送权益值',
             trigger: 'blur',
           },
         ],

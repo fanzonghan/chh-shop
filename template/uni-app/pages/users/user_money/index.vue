@@ -55,15 +55,15 @@
 					</navigator>
 					<navigator class='item' hover-class='none' url='/pages/users/user_integral/index'>
 						<view class='iconfont icon-jifenzhongxin'></view>
-						<view>{{$t(`积分中心`)}}</view>
+						<view>{{$t(`权益值中心`)}}</view>
 					</navigator>
 				</view>
 				<view class='advert acea-row row-between-wrapper'>
 					<navigator class='item acea-row row-between-wrapper' hover-class='none'
 						url='/pages/users/user_sgin/index'>
 						<view class='text'>
-							<view class='name'>{{$t(`签到领积分`)}}</view>
-							<view>{{$t(`赚积分抵现金`)}}</view>
+							<view class='name'>{{$t(`签到领权益值`)}}</view>
+							<view>{{$t(`赚权益值抵现金`)}}</view>
 						</view>
 						<view class='pictrue'>
 							<image src='../static/gift.png'></image>

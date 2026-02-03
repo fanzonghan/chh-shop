@@ -56,7 +56,7 @@ class StoreIntegralServices extends BaseServices
     }
 
     /**
-     * 积分商品添加
+     * 权益值商品添加
      * @param int $id
      * @param array $data
      */
@@ -150,7 +150,7 @@ class StoreIntegralServices extends BaseServices
     }
 
     /**
-     * 积分商品列表
+     * 权益值商品列表
      * @param array $where
      * @return array
      */
@@ -212,7 +212,7 @@ class StoreIntegralServices extends BaseServices
             $header[] = ['title' => $item['value'], 'key' => 'value' . ($key + 1), 'align' => 'center', 'minWidth' => 80];
         }
         $header[] = ['title' => '图片', 'slot' => 'pic', 'align' => 'center', 'minWidth' => 120];
-        $header[] = ['title' => '兑换积分', 'slot' => 'price', 'type' => 1, 'align' => 'center', 'minWidth' => 80];
+        $header[] = ['title' => '兑换权益值', 'slot' => 'price', 'type' => 1, 'align' => 'center', 'minWidth' => 80];
         $header[] = ['title' => '库存', 'key' => 'stock', 'align' => 'center', 'minWidth' => 80];
         $header[] = ['title' => '兑换次数', 'slot' => 'quota', 'type' => 1, 'align' => 'center', 'minWidth' => 80];
         $header[] = ['title' => '重量(KG)', 'key' => 'weight', 'align' => 'center', 'minWidth' => 80];
@@ -265,7 +265,7 @@ class StoreIntegralServices extends BaseServices
     }
 
     /**
-     * 积分商品详情
+     * 权益值商品详情
      * @param Request $request
      * @param int $id
      * @return mixed
@@ -327,9 +327,9 @@ class StoreIntegralServices extends BaseServices
         if ($unique) {
             /** @var StoreProductAttrValueServices $skuValueServices */
             $skuValueServices = app()->make(StoreProductAttrValueServices::class);
-            //减去积分商品的sku库存增加销量
+            //减去权益值商品的sku库存增加销量
             $res = false !== $skuValueServices->decProductAttrStock($integralId, $unique, $num, 4);
-            //减去积分商品库存
+            //减去权益值商品库存
             $res = $res && $this->dao->decStockIncSales(['id' => $integralId, 'type' => 4], $num);
             //获取拼团的sku
             $sku = $skuValueServices->value(['product_id' => $integralId, 'unique' => $unique, 'type' => 4], 'suk');
@@ -346,7 +346,7 @@ class StoreIntegralServices extends BaseServices
     }
 
     /**
-     * 获取一条积分商品
+     * 获取一条权益值商品
      * @param $id
      * @return mixed
      */
@@ -356,7 +356,7 @@ class StoreIntegralServices extends BaseServices
     }
 
     /**
-     * 验证积分商品下单库存限量
+     * 验证权益值商品下单库存限量
      * @param int $uid
      * @param int $integralId
      * @param int $num
@@ -398,7 +398,7 @@ class StoreIntegralServices extends BaseServices
     }
 
     /**
-     * 获取推荐积分商品
+     * 获取推荐权益值商品
      * @return array
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\DbException

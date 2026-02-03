@@ -36,8 +36,8 @@ Route::group('export', function () {
     Route::get('userFinance', 'v1.export.ExportExcel/userFinance')->option(['real_name' => '用户资金导出']);
     //用户佣金
     Route::get('userCommission', 'v1.export.ExportExcel/userCommission')->option(['real_name' => '用户佣金导出']);
-    //用户积分
-    Route::get('userPoint', 'v1.export.ExportExcel/userPoint')->option(['real_name' => '用户积分导出']);
+    //用户权益值
+    Route::get('userPoint', 'v1.export.ExportExcel/userPoint')->option(['real_name' => '用户权益值导出']);
     //用户充值
     Route::get('userRecharge', 'v1.export.ExportExcel/userRecharge')->option(['real_name' => '用户充值导出']);
 })->middleware([

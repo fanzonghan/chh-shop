@@ -42,9 +42,9 @@ Route::group('agent', function () {
     /** 分销设置 */
     Route::group(function () {
         //分销配置编辑表单
-        Route::get('config/edit_basics', 'v1.setting.SystemConfig/edit_basics')->option(['real_name' => '积分配置编辑表单']);
+        Route::get('config/edit_basics', 'v1.setting.SystemConfig/edit_basics')->option(['real_name' => '权益值配置编辑表单']);
         //分销配置保存数据
-        Route::post('config/save_basics', 'v1.setting.SystemConfig/save_basics')->option(['real_name' => '积分配置保存数据']);
+        Route::post('config/save_basics', 'v1.setting.SystemConfig/save_basics')->option(['real_name' => '权益值配置保存数据']);
     })->option(['parent' => 'agent', 'cate_name' => '分销设置']);
 
     /** 分销等级 */

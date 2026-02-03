@@ -12,6 +12,9 @@
 namespace app\services\user;
 
 use app\jobs\UserJob;
+use app\model\user\User;
+use app\model\user\UserAreaBind;
+use app\model\user\UserUpBind;
 use app\services\activity\bargain\StoreBargainServices;
 use app\services\activity\combination\StoreCombinationServices;
 use app\services\activity\seckill\StoreSeckillServices;
@@ -40,7 +43,10 @@ use crmeb\services\CacheService;
 use crmeb\services\FormBuilder as Form;
 use crmeb\services\FormBuilder;
 use crmeb\services\app\WechatService;
+use EasyWeChat\Message\Raw;
 use think\Exception;
+use think\facade\Db;
+use think\facade\Log;
 use think\facade\Route as Url;
 
 /**
@@ -491,7 +497,7 @@ class UserServices extends BaseServices
     }
 
     /**
-     * 增加用户积分
+     * 增加用户权益值
      * @param int $uid
      * @param float $old_integral
      * @param float $integral
@@ -506,7 +512,7 @@ class UserServices extends BaseServices
     }
 
     /**
-     * 减少用户积分
+     * 减少用户权益值
      * @param int $uid
      * @param float $old_integral
      * @param float $integral
@@ -815,21 +821,21 @@ class UserServices extends BaseServices
         } else {
             $res1 = true;
         }
-        if ($data['integration_status'] && $data['integration']) {//积分增加或者减少
+        if ($data['integration_status'] && $data['integration']) {//权益值增加或者减少
             /** @var UserBillServices $userBill */
             $userBill = app()->make(UserBillServices::class);
             $integral_data = ['link_id' => $data['adminId'] ?? 0, 'number' => $data['integration']];
             if ($data['integration_status'] == 1) {//增加
                 $edit['integral'] = bcadd($user['integral'], $data['integration'], 2);
                 $integral_data['balance'] = $edit['integral'];
-                $integral_data['title'] = '系统增加积分';
-                $integral_data['mark'] = '系统增加了' . floatval($data['integration']) . '积分';
+                $integral_data['title'] = '系统增加权益值';
+                $integral_data['mark'] = '系统增加了' . floatval($data['integration']) . '权益值';
                 $res2 = $userBill->incomeIntegral($user['uid'], 'system_add', $integral_data);
             } else if ($data['integration_status'] == 2) {//减少
                 $edit['integral'] = bcsub($user['integral'], $data['integration'], 2);
                 $integral_data['balance'] = $edit['integral'];
-                $integral_data['title'] = '系统减少积分';
-                $integral_data['mark'] = '系统扣除了' . floatval($data['integration']) . '积分';
+                $integral_data['title'] = '系统减少权益值';
+                $integral_data['mark'] = '系统扣除了' . floatval($data['integration']) . '权益值';
                 $res2 = $userBill->expendIntegral($user['uid'], 'system_sub', $integral_data);
             }
             event('OutPushListener', ['user_update_push', ['uid' => $id, 'type' => 'point', 'value' => $data['integration_status'] == 2 ? -intval($data['integration']) : $data['integration']]]);
@@ -889,8 +895,8 @@ class UserServices extends BaseServices
             $f[] = Form::radio('money_status', '修改余额', 1)->options([['value' => 1, 'label' => '增加'], ['value' => 2, 'label' => '减少']]);
             $f[] = Form::number('money', '余额', 0)->min(0)->max(999999.99);
         } else {
-            $f[] = Form::radio('integration_status', '修改积分', 1)->options([['value' => 1, 'label' => '增加'], ['value' => 2, 'label' => '减少']]);
-            $f[] = Form::number('integration', '积分', 0)->min(0)->precision(0)->max(999999);
+            $f[] = Form::radio('integration_status', '修改权益值', 1)->options([['value' => 1, 'label' => '增加'], ['value' => 2, 'label' => '减少']]);
+            $f[] = Form::number('integration', '权益值', 0)->min(0)->precision(0)->max(999999);
         }
         return create_form('修改其他', $f, Url::buildUrl('/user/update_other/' . $id), 'PUT');
     }
@@ -1193,7 +1199,7 @@ class UserServices extends BaseServices
             ['name' => '头像', 'value' => $userInfo['avatar']],
             ['name' => '邮箱', 'value' => ''],
             ['name' => '生日', 'value' => ''],
-            ['name' => '积分', 'value' => $userInfo['integral']],
+            ['name' => '权益值', 'value' => $userInfo['integral']],
             ['name' => '上级推广人', 'value' => $userInfo['spread_uid'] ? $this->getUserInfo($userInfo['spread_uid'], ['nickname'])['nickname'] ?? '' : ''],
             ['name' => '账户余额', 'value' => $userInfo['now_money']],
             ['name' => '佣金总收入', 'value' => app()->make(UserBillServices::class)->getBrokerageSum($uid)],
@@ -1203,7 +1209,7 @@ class UserServices extends BaseServices
     }
 
     /**
-     * 获取用户详情里面的用户消费能力和用户余额积分等
+     * 获取用户详情里面的用户消费能力和用户余额权益值等
      * @param $uid
      * @return array[]
      */
@@ -1232,7 +1238,7 @@ class UserServices extends BaseServices
                 'key' => '元',
             ],
             [
-                'title' => '积分',
+                'title' => '权益值',
                 'value' => $userInfo['integral'] ?? 0,
                 'key' => '',
             ],
@@ -1251,7 +1257,7 @@ class UserServices extends BaseServices
 
 
     /**
-     * 获取用户记录里的积分总数和签到总数和余额变动总数
+     * 获取用户记录里的权益值总数和签到总数和余额变动总数
      * @param $uid
      * @return array
      */
@@ -2289,14 +2295,14 @@ class UserServices extends BaseServices
         } else {
             $res1 = true;
         }
-        if ($reward_integral > 0) {//积分增加
+        if ($reward_integral > 0) {//权益值增加
             /** @var UserBillServices $userBill */
             $userBill = app()->make(UserBillServices::class);
             $integral_data = ['link_id' => 1, 'number' => $reward_integral];
             $edit['integral'] = bcadd($user['integral'], $reward_integral, 2);
             $integral_data['balance'] = $edit['integral'];
-            $integral_data['title'] = '新用户注册增加积分';
-            $integral_data['mark'] = '新用户注册增加了' . floatval($reward_integral) . '积分';
+            $integral_data['title'] = '新用户注册增加权益值';
+            $integral_data['mark'] = '新用户注册增加了' . floatval($reward_integral) . '权益值';
             $res2 = $userBill->incomeIntegral($user['uid'], 'system_add', $integral_data);
         } else {
             $res2 = true;
@@ -2322,5 +2328,151 @@ class UserServices extends BaseServices
     public function userUpdate($data, $pushUrl)
     {
         return out_push($pushUrl, $data, '更新用户信息');
+    }
+
+
+    /**
+     * 节点下滑逻辑 作废 不能无限下滑 只能A-B-C C-D-E下滑 无法下滑到B
+     */
+    public function nodeDownX($uid){
+
+        //新注册的用户
+        $userInfo = Db::name('user')->where('uid', $uid)->find();
+
+        //查询上级用户
+        $down_juid = $userInfo['spread_uid'];//第一次执行时候的用户id
+        if(empty($down_juid))return true;
+        do{
+            //查询用户预分区的值 分区标志
+            $plan_area = Db::name('user')->where('uid', $down_juid)->value('plan_area');
+            //查询预分区下是否已经存在用户
+            $zid = Db::name('user_area_bind')->where('uid',$down_juid)->where('area_label',$plan_area)->value('zid');
+            if(!empty($zid)){
+                $down_juid = $zid;
+                $state = true;
+            }else{
+                $state = false;
+            }
+        }while($state == true);
+        $plan_area_arr = [
+            'L'=>'R',
+            'R'=>'L'
+        ];
+        //更新预分区标志
+        $new_plan_area = $plan_area_arr[$plan_area];
+        Db::startTrans();
+        try{
+            if(Db::name('user_area_bind')->where(['uid'=>$down_juid,'zid'=>$userInfo['uid']])->find()){
+                throw new \Exception('该用户已存在');
+            }
+            Db::name('user')->where('uid', $down_juid)->update(['plan_area'=>$new_plan_area]);
+            Db::name('user_area_bind')->insert(['uid'=>$down_juid,'zid'=>$userInfo['uid'],'area_label'=>$plan_area]);
+            //更新用户节点
+            Db::name('user')->where('uid', $userInfo['uid'])->update(['juid'=>$down_juid]);
+            Db::commit();
+        }catch (\Exception $e){
+            Db::rollback();
+            return;
+        }
+    }
+
+    public function nodeDown($uid){
+        //新注册的用户
+        $userInfo = Db::name('user')->where('uid', $uid)->find();
+
+        //查询上级用户
+        $down_juid = $userInfo['spread_uid'];//第一次执行时候的用户id
+        if(empty($down_juid))return true;
+
+        //查询推广用户下边推荐人总数
+        $directRefCount = UserUpBind::where('FIND_IN_SET(:value, superior)', ['value' => $down_juid])->count();
+        if($directRefCount == 0 || $directRefCount == 1){
+            //查询用户预分区的值 分区标志
+            $plan_area = Db::name('user')->where('uid', $down_juid)->value('plan_area');
+        }else{
+            // 对于后续推荐，交替放在已有推荐的L/R区
+            $referralToPlaceUnder = floor($directRefCount / 2);
+            $position = ($directRefCount) % 2;//分区 0是L 1是R
+
+            // 获取第$referralToPlaceUnder个推荐的uid
+            $targetUid  = UserUpBind::where('FIND_IN_SET(:value, superior)', ['value' => $down_juid])->order('uid','asc')->column('uid');
+            $down_juid = $targetUid[$referralToPlaceUnder - 1];
+            $plan_area = $position == 0 ? 'L' : 'R';
+        }
+
+        $plan_area_arr = [
+            'L'=>'R',
+            'R'=>'L'
+        ];
+        //更新预分区标志
+        $new_plan_area = $plan_area_arr[$plan_area];
+        Db::startTrans();
+        try{
+            if(Db::name('user_area_bind')->where(['uid'=>$down_juid,'zid'=>$userInfo['uid']])->find()){
+                throw new \Exception('该用户已存在');
+            }
+            Db::name('user')->where('uid', $down_juid)->update(['plan_area'=>$new_plan_area]);
+            Db::name('user_area_bind')->insert(['uid'=>$down_juid,'zid'=>$userInfo['uid'],'area_label'=>$plan_area]);
+            //更新用户节点
+            Db::name('user')->where('uid', $userInfo['uid'])->update(['juid'=>$down_juid]);
+            Db::commit();
+        }catch (\Exception $e){
+            Db::rollback();
+            return;
+        }
+    }
+
+    //初始化用户全部上级节点
+    public function nodeUp($uid){
+        $ids = [];//最终结果
+        $juid = $uid;
+        do {
+            $juid = Db::name('user')->where('uid', $juid)->value('juid');
+            if(!empty($juid)){
+                //此处可以查现有的upBind表 如果存在直接拿出来 不存在在继续遍历
+                $superior = Db::name('user_up_bind')->where('uid',$juid)->value('superior');
+                if(!empty($superior)){
+                    $superior = $juid . ','.$superior;
+                    $superiorArr = explode(',', $superior);
+                    //合并
+                    $ids = array_merge($ids, $superiorArr);
+                    $state = false;
+                }else{
+                    $ids[] = $juid;
+                    $state = true;
+                }
+            }else{
+                $state = false;
+            }
+        } while ($state == true);
+//        $ids = array_reverse($ids);
+        $ids = implode(',', $ids);
+        Db::name('user_up_bind')->where('uid',$uid)->delete();
+        Db::name('user_up_bind')->insert(['uid'=>$uid,'superior'=>$ids]);
+    }
+
+    //计算某个用户团体的累计业绩  弃用 用户字段实时储存
+    public function getUserTeamAchievement($uid)
+    {
+        Log::error('$uid:'.$uid);
+        $uids = UserUpBind::whereLike('superior',"%$uid%")->column('uid');
+        Log::error('$uids:'.json_encode($uids));
+        $money = 0;
+
+        /** @var StoreOrderServices $orderServices */
+        $orderServices = app()->make(StoreOrderServices::class);
+        //自己的先加上
+        $where = ['uid' => $uid, 'paid' => 1, 'refund_status' => 0, 'pid' => 0];
+        $total_money = $orderServices->together($where, 'pay_price');
+        $money += $total_money;
+
+        foreach ($uids as $uid) {
+            //用户总业绩
+            $where = ['uid' => $uid, 'paid' => 1, 'refund_status' => 0, 'pid' => 0];
+            $total_money = $orderServices->together($where, 'pay_price');
+            Log::error($uid.'-$total_money:'.$total_money);
+            $money += $total_money;
+        }
+        return $money;
     }
 }

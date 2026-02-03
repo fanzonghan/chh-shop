@@ -259,7 +259,7 @@
     },
     {
       "icon_id": "38535244",
-      "name": "待发货-积分",
+      "name": "待发货-权益值",
       "font_class": "daifahuo-jifen",
       "unicode": "e78c",
       "unicode_decimal": 59276
@@ -455,7 +455,7 @@
     },
     {
       "icon_id": "38312039",
-      "name": "组件-积分商城",
+      "name": "组件-权益值商城",
       "font_class": "zujian-jifenshangcheng",
       "unicode": "e775",
       "unicode_decimal": 59253
@@ -1001,14 +1001,14 @@
     },
     {
       "icon_id": "34383552",
-      "name": "当前积分",
+      "name": "当前权益值",
       "font_class": "dangqianjifen",
       "unicode": "e6bb",
       "unicode_decimal": 59067
     },
     {
       "icon_id": "34383553",
-      "name": "累计积分",
+      "name": "累计权益值",
       "font_class": "leijijifen",
       "unicode": "e6be",
       "unicode_decimal": 59070
@@ -1064,7 +1064,7 @@
     },
     {
       "icon_id": "34383561",
-      "name": "消耗积分",
+      "name": "消耗权益值",
       "font_class": "xiaohaojifen",
       "unicode": "e6c6",
       "unicode_decimal": 59078
@@ -1190,7 +1190,7 @@
     },
     {
       "icon_id": "32960520",
-      "name": "积分商城",
+      "name": "权益值商城",
       "font_class": "jifenshangcheng",
       "unicode": "e8dc",
       "unicode_decimal": 59612
@@ -1505,7 +1505,7 @@
     },
     {
       "icon_id": "28495815",
-      "name": "pc-积分",
+      "name": "pc-权益值",
       "font_class": "pc-jifen",
       "unicode": "e7e3",
       "unicode_decimal": 59363

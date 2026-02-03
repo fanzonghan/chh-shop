@@ -15,7 +15,7 @@ use app\services\activity\integral\StorePointRecordServices;
 use think\facade\App;
 
 /**
- * 积分记录
+ * 权益值记录
  */
 class StorePointRecord extends AuthController
 {
@@ -30,7 +30,7 @@ class StorePointRecord extends AuthController
     }
 
     /**
-     * 积分记录
+     * 权益值记录
      * @return mixed
      */
     public function pointRecord()
@@ -44,7 +44,7 @@ class StorePointRecord extends AuthController
     }
 
     /**
-     * 积分记录备注
+     * 权益值记录备注
      * @return mixed
      */
     public function pointRecordRemark($id = 0)
@@ -57,7 +57,7 @@ class StorePointRecord extends AuthController
     }
 
     /**
-     * 积分统计基础信息
+     * 权益值统计基础信息
      * @return mixed
      */
     public function getBasic()
@@ -70,7 +70,7 @@ class StorePointRecord extends AuthController
     }
 
     /**
-     * 积分统计趋势图
+     * 权益值统计趋势图
      * @return mixed
      */
     public function getTrend()
@@ -83,7 +83,7 @@ class StorePointRecord extends AuthController
     }
 
     /**
-     * 积分来源
+     * 权益值来源
      * @return mixed
      */
     public function getChannel()
@@ -96,7 +96,7 @@ class StorePointRecord extends AuthController
     }
 
     /**
-     * 积分消耗
+     * 权益值消耗
      * @return mixed
      */
     public function getType()

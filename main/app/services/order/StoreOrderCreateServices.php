@@ -306,7 +306,7 @@ class StoreOrderCreateServices extends BaseServices
             $userService = app()->make(UserServices::class);
             $realName = $userService->value(['uid' => $uid], 'real_name');
             if ($realName == '') $userService->update(['uid' => $uid], ['real_name' => $orderInfo['real_name'], 'record_phone' => $orderInfo['user_phone']]);
-            //积分抵扣
+            //权益值抵扣
             if ($priceData['usedIntegral'] > 0) {
                 $this->deductIntegral($userInfo, $useIntegral, $priceData, (int)$userInfo['uid'], $order['id']);
             }
@@ -349,7 +349,7 @@ class StoreOrderCreateServices extends BaseServices
 
 
     /**
-     * 抵扣积分
+     * 抵扣权益值
      * @param array $userInfo
      * @param bool $useIntegral
      * @param array $priceData
@@ -505,7 +505,7 @@ class StoreOrderCreateServices extends BaseServices
             }
             $createService->update(['id' => $orderId], $orderData);
         } catch (\Throwable $e) {
-            throw new ApiException('计算订单实际优惠、积分、邮费、佣金失败，原因：' . $e->getMessage());
+            throw new ApiException('计算订单实际优惠、权益值、邮费、佣金失败，原因：' . $e->getMessage());
         }
     }
 
@@ -533,7 +533,7 @@ class StoreOrderCreateServices extends BaseServices
             throw new ApiException(410248);
         }
         //truePice实际支付单价（存在）
-        //几件商品总体优惠 以及积分抵扣金额
+        //几件商品总体优惠 以及权益值抵扣金额
         foreach ($cartInfo as &$cart) {
             $coupon_price = $cart['coupon_price'] ?? 0;
             $integral_price = $cart['integral_price'] ?? 0;
@@ -664,7 +664,7 @@ class StoreOrderCreateServices extends BaseServices
     }
 
     /**
-     * 计算订单商品积分实际抵扣金额
+     * 计算订单商品权益值实际抵扣金额
      * @param array $cartInfo
      * @param array $priceData
      * @return array

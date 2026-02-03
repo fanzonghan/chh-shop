@@ -36,7 +36,7 @@
     <div class="code-row-bg">
       <el-card :bordered="false" shadow="never" class="ivu-mt">
         <div class="acea-row row-between-wrapper">
-          <div class="statics-header-title">积分来源</div>
+          <div class="statics-header-title">权益值来源</div>
           <div>切换样式</div>
         </div>
         <echarts-new
@@ -49,7 +49,7 @@
       </el-card>
       <el-card :bordered="false" shadow="never" class="ivu-mt">
         <div class="acea-row row-between-wrapper">
-          <div class="statics-header-title">积分消耗</div>
+          <div class="statics-header-title">权益值消耗</div>
           <div>切换样式</div>
         </div>
         <echarts-new

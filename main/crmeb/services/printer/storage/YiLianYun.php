@@ -100,7 +100,7 @@ class YiLianYun extends BasePrinter
 //姓    名: {$orderInfo['real_name']}\r
 //电    话: {$orderInfo['user_phone']}\r
 //地    址: {$orderInfo['user_address']}\r
-//赠送积分: {$orderInfo['gain_integral']}\r
+//赠送权益值: {$orderInfo['gain_integral']}\r
 //订单备注：{$orderInfo['mark']}\r
 //*************商品***************\r
 //{$goodsStr}

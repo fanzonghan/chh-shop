@@ -173,7 +173,7 @@ class UserWechatUserDao extends BaseDao
             }
         }
 
-        //积分剩余
+        //权益值剩余
         if (isset($where['integral']) && count($where['integral']) == 2) {
             if ($where['integral'][0] != '' && $where['integral'][1] != '') {
                 $model = $model->whereBetween($userAlias . 'integral', $where['integral']);

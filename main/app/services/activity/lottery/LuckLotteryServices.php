@@ -45,7 +45,7 @@ class LuckLotteryServices extends BaseServices
      * @var string[]
      */
     protected $lottery_factor = [
-        '1' => '积分抽取',
+        '1' => '权益值抽取',
 //        '2' => '余额抽奖',
         '3' => '订单支付',
         '4' => '订单评价',
@@ -351,7 +351,7 @@ class LuckLotteryServices extends BaseServices
         if (!$lottery) {
             throw new ApiException(410057);
         }
-        //抽奖类型：1:积分2：余额3：下单支付成功4：订单评价5：拉新人
+        //抽奖类型：1:权益值2：余额3：下单支付成功4：订单评价5：拉新人
         switch ($lottery['factor']) {
             case 1:
                 /** @var UserBillServices $userBillServices */
@@ -457,7 +457,7 @@ class LuckLotteryServices extends BaseServices
             throw new ApiException(410060);
         }
         if ($this->getLotteryNum($uid, $lottery_id, $userInfo, $lottery) < 1) {
-            //抽奖类型：1:积分2：余额3：下单支付成功4：订单评价5：拉新人
+            //抽奖类型：1:权益值2：余额3：下单支付成功4：订单评价5：拉新人
             switch ($lottery['factor']) {
                 case 1:
                     throw new ApiException(410061);
@@ -481,7 +481,7 @@ class LuckLotteryServices extends BaseServices
             if (!$prize) {
                 throw new ApiException(410060);
             }
-            //中奖扣除积分、余额
+            //中奖扣除权益值、余额
             $this->lotteryFactor($uid, $userInfo, $lottery);
             //中奖减少奖品数量
             $luckPrizeServices->decPrizeNum($prize['id'], $prize);
@@ -509,7 +509,7 @@ class LuckLotteryServices extends BaseServices
     }
 
     /**
-     * 抽奖消耗扣除用户积分、余额等
+     * 抽奖消耗扣除用户权益值、余额等
      * @param int $uid
      * @param array $userInfo
      * @param array $lottery
@@ -521,7 +521,7 @@ class LuckLotteryServices extends BaseServices
         if (!$userInfo || !$lottery) {
             return true;
         }
-        //抽奖类型：1:积分2：余额3：下单支付成功4：订单评价5：拉新人
+        //抽奖类型：1:权益值2：余额3：下单支付成功4：订单评价5：拉新人
         switch ($lottery['factor']) {
             case 1:
                 if ($userInfo['integral'] > $lottery['factor_num']) {

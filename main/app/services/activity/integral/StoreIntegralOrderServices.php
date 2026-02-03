@@ -197,7 +197,7 @@ class StoreIntegralOrderServices extends BaseServices
             }
             //扣库存
             $this->decGoodsStock($productInfo, $num);
-            //减积分
+            //减权益值
             $this->deductIntegral($userInfo, $total_price, (int)$userInfo['uid'], $order->id);
             return $order;
         });
@@ -213,7 +213,7 @@ class StoreIntegralOrderServices extends BaseServices
     }
 
     /**
-     * 抵扣积分
+     * 抵扣权益值
      * @param array $userInfo
      * @param bool $useIntegral
      * @param array $priceData

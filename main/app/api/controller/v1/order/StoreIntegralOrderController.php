@@ -63,7 +63,7 @@ class StoreIntegralOrderController
         $productInfo = is_object($productInfo) ? $productInfo->toArray() : $productInfo;
 
         $num = (int)$num;
-        //判断积分商品限量
+        //判断权益值商品限量
         $storeIntegralServices->checkoutProductStock($uid, $productInfo['product_id'], $num, $unique);
         $order = $this->services->createOrder($uid, $addressId, $mark, $request->user()->toArray(), $num, $productInfo);
         return app('json')->status('success', 410203, ['orderId' => $order['order_id']]);

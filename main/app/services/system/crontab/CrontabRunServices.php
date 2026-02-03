@@ -2,6 +2,8 @@
 
 namespace app\services\system\crontab;
 
+use app\jobs\AutoLevelJob;
+use app\jobs\DailyAwardJob;
 use app\services\activity\combination\StorePinkServices;
 use app\services\activity\live\LiveGoodsServices;
 use app\services\activity\live\LiveRoomServices;
@@ -39,6 +41,8 @@ class CrontabRunServices
         'autoInvoice' => '自动开具发票以及退款自动冲红',
         'signRemind' => '未签到提醒',
         'customTimer' => '自定义定时任务',
+        'DailyAward' => 'XiaoFan奖励定时发放',
+        'AutoLevel' => 'XiaoFan检测用户升级',
     ];
 
     /**
@@ -260,6 +264,30 @@ class CrontabRunServices
             $this->crontabLog(' 自定义定时器执行成功');
         } catch (\Throwable $e) {
             $this->crontabLog('自定义定时器执行失败,失败原因:' . $e->getMessage());
+        }
+    }
+
+    /**
+     * XiaoFan奖励定时发放
+     */
+    public function DailyAward(){
+        try {
+            DailyAwardJob::dispatch([]);
+            $this->crontabLog('奖励定时发放执行成功');
+        } catch (\Throwable $e) {
+            $this->crontabLog('奖励定时发放执行失败,失败原因:' . $e->getMessage());
+        }
+    }
+
+    /**
+     * XiaoFan检测用户升级
+     */
+    public function AutoLevel(){
+        try {
+            AutoLevelJob::dispatch([]);
+            $this->crontabLog('检测用户升级执行成功');
+        } catch (\Throwable $e) {
+            $this->crontabLog('检测用户升级执行失败,失败原因:' . $e->getMessage());
         }
     }
 }

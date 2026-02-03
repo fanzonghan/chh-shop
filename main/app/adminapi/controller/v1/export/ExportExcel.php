@@ -228,7 +228,7 @@ class ExportExcel extends AuthController
     }
 
     /**
-     * 用户积分
+     * 用户权益值
      * @param UserBillServices $services
      * @return mixed
      */

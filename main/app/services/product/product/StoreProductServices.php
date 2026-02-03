@@ -1106,7 +1106,7 @@ class StoreProductServices extends BaseServices
             $header[] = ['title' => '成本价', 'key' => 'cost', 'align' => 'center', 'minWidth' => 80];
             $header[] = ['title' => '日常售价', 'key' => 'r_price', 'align' => 'center', 'minWidth' => 80];
         } elseif ($type == 4) {
-            $header[] = ['title' => '兑换积分', 'slot' => 'price', 'type' => 1, 'align' => 'center', 'minWidth' => 80];
+            $header[] = ['title' => '兑换权益值', 'slot' => 'price', 'type' => 1, 'align' => 'center', 'minWidth' => 80];
         } elseif ($type == 6) {
             $header[] = ['title' => '预售价', 'key' => 'price', 'type' => 1, 'align' => 'center', 'minWidth' => 80];
             $header[] = ['title' => '成本价', 'key' => 'cost', 'align' => 'center', 'minWidth' => 80];
@@ -2318,7 +2318,7 @@ class StoreProductServices extends BaseServices
             '已售数量', '起购数量',
             '规格类型', '规格类型值', '规格名称', '规格值组合', '规格图片', '售价', '划线价', '成本价', '库存', '重量', '体积', '商品编码', '条形码',
             '商品简介', '商品关键字', '商品口令',
-            '购买送积分'
+            '购买送权益值'
         ];
         $filename = '商品迁移数据_' . date('YmdHis', time());
         $virtualType = ['普通商品', '卡密/网盘', '优惠券', '虚拟商品'];

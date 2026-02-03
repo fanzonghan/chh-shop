@@ -424,7 +424,7 @@ class UserBillController
     }
 
     /**
-     * 积分记录
+     * 权益值记录
      * @param Request $request
      * @return mixed
      * @throws \think\db\exception\DataNotFoundException

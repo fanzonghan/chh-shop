@@ -18,7 +18,7 @@
                 clearable
                 @change="userSearchs"
               >
-                <el-option value="1" label="积分抽取"></el-option>
+                <el-option value="1" label="权益值抽取"></el-option>
                 <el-option value="3" label="订单支付"></el-option>
                 <el-option value="4" label="订单评价"></el-option>
               </el-select>

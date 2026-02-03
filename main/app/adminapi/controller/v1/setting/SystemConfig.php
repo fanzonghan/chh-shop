@@ -349,12 +349,12 @@ class SystemConfig extends AuthController
         }
         if (isset($post['reward_integral']) || isset($post['reward_money'])) {
             if ($post['reward_money'] < 0) return app('json')->fail('赠送余额不能小于0元');
-            if ($post['reward_integral'] < 0) return app('json')->fail('赠送积分不能小于0');
+            if ($post['reward_integral'] < 0) return app('json')->fail('赠送权益值不能小于0');
         }
 
         if (isset($post['sign_give_point'])) {
             if (!is_int($post['sign_give_point']) || $post['sign_give_point'] < 0) {
-                return app('json')->fail('签到赠送积分请填写大于等于0的整数');
+                return app('json')->fail('签到赠送权益值请填写大于等于0的整数');
             }
         }
         if (isset($post['sign_give_exp'])) {
@@ -364,7 +364,7 @@ class SystemConfig extends AuthController
         }
         if (isset($post['integral_frozen'])) {
             if (!ctype_digit($post['integral_frozen']) || $post['integral_frozen'] < 0) {
-                return app('json')->fail('积分冻结天数请填写大于等于0的整数');
+                return app('json')->fail('权益值冻结天数请填写大于等于0的整数');
             }
         }
         if (isset($post['store_free_postage'])) {
@@ -382,7 +382,7 @@ class SystemConfig extends AuthController
         }
         if (isset($post['integral_max_num'])) {
             if (!ctype_digit($post['integral_max_num']) || $post['integral_max_num'] < 0) {
-                return app('json')->fail('积分抵扣上限请填写大于等于0的整数');
+                return app('json')->fail('权益值抵扣上限请填写大于等于0的整数');
             }
         }
         if (isset($post['customer_phone'])) {

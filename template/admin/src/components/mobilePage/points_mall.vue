@@ -83,7 +83,7 @@
                   : themeColor,
               }"
             >
-              68880积分
+              68880权益值
             </div>
           </div>
         </div>
@@ -182,7 +182,7 @@ import { mapState, mapMutations } from 'vuex';
 import Setting from '@/setting';
 export default {
   name: 'points_mall',
-  cname: '积分商城',
+  cname: '权益值商城',
   configName: 'c_points_mall',
   icon: '#iconzujian-jifenshangcheng',
   type: 1, // 0 基础组件 1 营销组件 2工具组件
@@ -229,7 +229,7 @@ export default {
     return {
       // 默认初始化数据禁止修改
       defaultConfig: {
-        cname: '积分商城',
+        cname: '权益值商城',
         name: 'pointsMall',
         timestamp: this.num,
         isHide: false,
@@ -289,7 +289,7 @@ export default {
         },
         titleTxtConfig: {
           title: '标题文字',
-          value: '积分兑好礼',
+          value: '权益值兑好礼',
           place: '请输入标题文字',
           max: 10,
         },

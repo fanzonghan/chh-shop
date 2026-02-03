@@ -207,7 +207,7 @@ export default {
       name: `${pre}integral`,
       meta: {
         auth: ['marketing-integral-system_config'],
-        title: '积分配置',
+        title: '权益值配置',
       },
       component: () => import('@/pages/setting/setSystem/index'),
     },
@@ -225,7 +225,7 @@ export default {
       name: `${pre}storeIntegral`,
       meta: {
         auth: ['marketing-store_integral'],
-        title: '积分商品',
+        title: '权益值商品',
         keepAlive: true,
       },
       component: () => import('@/pages/marketing/storeIntegral/index'),
@@ -235,7 +235,7 @@ export default {
       name: `${pre}storeIntegralCreate`,
       meta: {
         auth: ['marketing-store_integral-create'],
-        title: '添加积分商品',
+        title: '添加权益值商品',
         activeMenu: routePre + '/marketing/store_integral/index',
       },
       component: () => import('@/pages/marketing/storeIntegral/create'),
@@ -254,7 +254,7 @@ export default {
       name: `${pre}userPoint`,
       meta: {
         auth: ['marketing-user_point'],
-        title: '积分日志',
+        title: '权益值日志',
       },
       component: () => import('@/pages/marketing/userPoint/index'),
     },
@@ -414,7 +414,7 @@ export default {
       name: `${pre}point_record`,
       meta: {
         auth: ['marketing-point_record-index'],
-        title: '积分记录',
+        title: '权益值记录',
       },
       component: () => import('@/pages/marketing/point_record/index'),
     },
@@ -423,7 +423,7 @@ export default {
       name: `${pre}point_statistic`,
       meta: {
         auth: ['marketing-point_statistic-index'],
-        title: '积分统计',
+        title: '权益值统计',
       },
       component: () => import('@/pages/marketing/point_statistic/index'),
     },

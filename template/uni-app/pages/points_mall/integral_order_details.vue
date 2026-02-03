@@ -25,7 +25,7 @@
 							<view class='attr line1'>{{cartInfo.suk}}
 							</view>
 							<view class='money font-num'>
-								{{cartInfo.price}}{{$t(`积分`)}}
+								{{cartInfo.price}}{{$t(`权益值`)}}
 							</view>
 						</view>
 					</view>
@@ -52,7 +52,7 @@
 					<view class='conter'>{{cartInfo.add_time}}</view>
 				</view>
 				<view class='item acea-row row-between'>
-					<view>{{$t(`支付积分`)}}：</view>
+					<view>{{$t(`支付权益值`)}}：</view>
 					<view class='conter'>{{cartInfo.total_price}}</view>
 				</view>
 				<view class='item acea-row row-between' v-if="cartInfo.mark">

@@ -170,7 +170,7 @@ export default {
 		// 分享朋友圈及朋友
 	onShareAppMessage() {
 		return {
-			title: '积分抽奖',
+			title: '权益值抽奖',
 			path: '/pages/goods/lottery/grids/index?type=' + this.type + '&lottery_id=' + this.lottery_id + '&spread=' + this.$store.state.app.uid,
 			imageUrl: this.image
 		}

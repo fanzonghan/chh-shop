@@ -42,18 +42,18 @@ class UserBillServices extends BaseServices
      */
     protected $incomeData = [
         'pay_give_integral' => [
-            'title' => '购买商品赠送积分',
+            'title' => '购买商品赠送权益值',
             'category' => 'integral',
             'type' => 'product_gain',
-            'mark' => '购买商品赠送{%num%}积分',
+            'mark' => '购买商品赠送{%num%}权益值',
             'status' => 1,
             'pm' => 1
         ],
         'order_give_integral' => [
-            'title' => '下单赠送积分',
+            'title' => '下单赠送权益值',
             'category' => 'integral',
             'type' => 'gain',
-            'mark' => '下单赠送{%num%}积分',
+            'mark' => '下单赠送{%num%}权益值',
             'status' => 1,
             'pm' => 1
         ],
@@ -98,34 +98,34 @@ class UserBillServices extends BaseServices
             'pm' => 1
         ],
         'integral_refund' => [
-            'title' => '扣除订单下单赠送积分',
+            'title' => '扣除订单下单赠送权益值',
             'category' => 'integral',
             'type' => 'order_deduction',
-            'mark' => '购买商品失败,回退赠送积分{%num%}',
+            'mark' => '购买商品失败,回退赠送权益值{%num%}',
             'status' => 1,
             'pm' => 0
         ],
         'order_integral_refund' => [
-            'title' => '返还下单使用积分',
+            'title' => '返还下单使用权益值',
             'category' => 'integral',
             'type' => 'integral_refund',
-            'mark' => '购买商品失败,回退积分{%num%}',
+            'mark' => '购买商品失败,回退权益值{%num%}',
             'status' => 1,
             'pm' => 1
         ],
         'pay_product_integral_back' => [
-            'title' => '商品退积分',
+            'title' => '商品退权益值',
             'category' => 'integral',
             'type' => 'pay_product_integral_back',
-            'mark' => '订单退积分{%num%}积分到用户积分',
+            'mark' => '订单退权益值{%num%}权益值到用户权益值',
             'status' => 1,
             'pm' => 1
         ],
         'deduction' => [
-            'title' => '积分抵扣',
+            'title' => '权益值抵扣',
             'category' => 'integral',
             'type' => 'deduction',
-            'mark' => '购买商品使用{%number%}积分抵扣{%deductionPrice%}元',
+            'mark' => '购买商品使用{%number%}权益值抵扣{%deductionPrice%}元',
             'status' => 1,
             'pm' => 0
         ],
@@ -178,18 +178,18 @@ class UserBillServices extends BaseServices
             'pm' => 0
         ],
         'lottery_use_integral' => [
-            'title' => '参与抽奖使用积分',
+            'title' => '参与抽奖使用权益值',
             'category' => 'integral',
             'type' => 'lottery_use',
-            'mark' => '参与抽奖使用{%num%}积分',
+            'mark' => '参与抽奖使用{%num%}权益值',
             'status' => 1,
             'pm' => 0
         ],
         'lottery_give_integral' => [
-            'title' => '抽奖中奖赠送积分',
+            'title' => '抽奖中奖赠送权益值',
             'category' => 'integral',
             'type' => 'lottery_add',
-            'mark' => '抽奖中奖赠送{%num%}积分',
+            'mark' => '抽奖中奖赠送{%num%}权益值',
             'status' => 1,
             'pm' => 1
         ],
@@ -210,10 +210,10 @@ class UserBillServices extends BaseServices
             'pm' => 1
         ],
         'storeIntegral_use_integral' => [
-            'title' => '积分兑换商品',
+            'title' => '权益值兑换商品',
             'category' => 'integral',
             'type' => 'storeIntegral_use',
-            'mark' => '积分商城兑换商品使用{%num%}积分',
+            'mark' => '权益值商城兑换商品使用{%num%}权益值',
             'status' => 1,
             'pm' => 0
         ],
@@ -376,7 +376,7 @@ class UserBillServices extends BaseServices
     }
 
     /**
-     * 获取用户的积分总数
+     * 获取用户的权益值总数
      * @param int $uid
      * @return float
      */
@@ -389,7 +389,7 @@ class UserBillServices extends BaseServices
     }
 
     /**
-     * 获取用户的获取积分总次数
+     * 获取用户的获取权益值总次数
      * @param int $uid
      * @return float
      */
@@ -402,7 +402,7 @@ class UserBillServices extends BaseServices
     }
 
     /**
-     * 获取积分列表
+     * 获取权益值列表
      * @param int $uid
      * @param array $where_time
      * @param string $field
@@ -547,7 +547,7 @@ class UserBillServices extends BaseServices
     }
 
     /**
-     * 增加积分
+     * 增加权益值
      * @param int $uid
      * @param string $type
      * @param array $data
@@ -568,7 +568,7 @@ class UserBillServices extends BaseServices
     }
 
     /**
-     * 扣除积分
+     * 扣除权益值
      * @param int $uid
      * @param string $type
      * @param array $data
@@ -848,7 +848,7 @@ class UserBillServices extends BaseServices
     }
 
     /**
-     * 获取积分列表
+     * 获取权益值列表
      * @param array $where
      * @param string $field
      * @return array
@@ -887,7 +887,7 @@ class UserBillServices extends BaseServices
     }
 
     /**
-     * 积分头部信息
+     * 权益值头部信息
      * @param array $where
      * @return array[]
      */
@@ -912,7 +912,7 @@ class UserBillServices extends BaseServices
             [
                 'col' => 6,
                 'count' => $data['SumIntegral'],
-                'name' => '总积分(个)',
+                'name' => '总权益值(个)',
             ],
             [
                 'col' => 6,
@@ -922,12 +922,12 @@ class UserBillServices extends BaseServices
             [
                 'col' => 6,
                 'count' => $data['SumSign'],
-                'name' => '签到送出积分(个)',
+                'name' => '签到送出权益值(个)',
             ],
             [
                 'col' => 6,
                 'count' => $data['SumDeductionIntegral'],
-                'name' => '使用积分(个)',
+                'name' => '使用权益值(个)',
             ],
         ];
     }

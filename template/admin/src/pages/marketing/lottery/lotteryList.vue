@@ -48,7 +48,7 @@
             placeholder="全部"
           >
             <el-option label="全部" value="" />
-            <el-option label="积分抽取" :value="1" />
+            <el-option label="权益值抽取" :value="1" />
             <el-option label="订单支付" :value="3" />
             <el-option label="订单评价" :value="4" />
           </el-select>
@@ -232,7 +232,7 @@ export default {
       typeList: [
         { text: '全部', val: '' },
         { text: '未中奖', val: '1' },
-        { text: '积分', val: '2' },
+        { text: '权益值', val: '2' },
         { text: '余额', val: '3' },
         { text: '红包', val: '4' },
         { text: '优惠券', val: '5' },

@@ -62,6 +62,12 @@
 									<view class="vip" v-if="userInfo.is_money_level > 0 && userInfo.svip_open">
 										<image src="/static/images/svip.png"></image>
 									</view>
+									<view v-if="userInfo.agent_level > 0" style="margin-left: 10rpx;" @click="goMenuPage('/pages/users/user_distribution_level/index')">
+										<fui-badge :value="userInfo.agent_level_name"></fui-badge>
+									</view>
+									<view v-else>
+										<fui-badge value="普通用户"></fui-badge>
+									</view>
 								</view>
 								<view class="num" v-if="userInfo.phone" @click="goEdit()">
 									<view class="num-txt">{{ userInfo.phone }}</view>
@@ -93,21 +99,17 @@
 							<!-- #endif -->
 						</view>
 						<view class="num-wrapper">
-							<view class="num-item" v-if="userInfo.balance_func_status" @click="goMenuPage('/pages/users/user_money/index')">
+							<view class="num-item" @click="goMenuPage('/pages/users/user_money/index')">
 								<text class="num">{{ userInfo.now_money || 0 }}</text>
 								<view class="txt">{{ $t('余额') }}</view>
 							</view>
-							<view class="num-item" v-else @click="goMenuPage('/pages/users/user_goods_collection/index')">
-								<text class="num">{{ userInfo.collectCount || 0 }}</text>
-								<view class="txt">{{ $t('收藏') }}</view>
-							</view>
-							<view class="num-item" @click="goMenuPage('/pages/users/user_coupon/index')">
-								<text class="num">{{ userInfo.couponCount || 0 }}</text>
-								<view class="txt">{{ $t('优惠券') }}</view>
+							<view class="num-item" @click="goMenuPage('/pages/users/user_spread_money/index')">
+								<text class="num">{{ userInfo.brokerage_price || 0 }}</text>
+								<view class="txt">{{ $t('佣金') }}</view>
 							</view>
 							<view class="num-item" @click="goMenuPage('/pages/users/user_integral/index')">
 								<text class="num">{{ userInfo.integral || 0 }}</text>
-								<view class="txt">{{ $t('积分') }}</view>
+								<view class="txt">{{ $t('权益值') }}</view>
 							</view>
 						</view>
 						<!-- <view class="sign" @click="goSignIn">签到</view> -->
@@ -267,8 +269,6 @@
 						</block>
 					</view>
 				</view>
-				<image :src="copyRightPic" alt="" class="support"></image>
-				<view class="uni-p-b-98"></view>
 			</scroll-view>
 			<editUserModal :isShow="editModal" @closeEdit="closeEdit" @editSuccess="editSuccess"></editUserModal>
 		</view>

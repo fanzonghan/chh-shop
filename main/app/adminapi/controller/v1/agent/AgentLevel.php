@@ -69,15 +69,11 @@ class AgentLevel extends AuthController
             ['name', ''],
             ['grade', 0],
             ['image', ''],
-            ['one_brokerage_percent', 0],
-            ['two_brokerage_percent', 0],
+            ['desc', ''],
             ['status', 0]]);
         if (!$data['name']) return app('json')->fail(400200);
         if (!$data['grade']) return app('json')->fail(400201);
         if (!$data['image']) return app('json')->fail(400202);
-        if ($data['two_brokerage_percent'] > $data['one_brokerage_percent']) {
-            return app('json')->fail(400203);
-        }
         $grade = $this->services->get(['grade' => $data['grade'], 'is_del' => 0]);
         if ($grade) {
             return app('json')->fail(400204);
@@ -121,15 +117,11 @@ class AgentLevel extends AuthController
             ['name', ''],
             ['grade', 0],
             ['image', ''],
-            ['one_brokerage_percent', 0],
-            ['two_brokerage_percent', 0],
+            ['desc', ''],
             ['status', 0]]);
         if (!$data['name']) return app('json')->fail(400200);
         if (!$data['grade']) return app('json')->fail(400201);
         if (!$data['image']) return app('json')->fail(400202);
-        if ($data['two_brokerage_percent'] > $data['one_brokerage_percent']) {
-            return app('json')->fail(400203);
-        }
         if (!$levelInfo = $this->services->getLevelInfo((int)$id)) return app('json')->fail(400206);
         $grade = $this->services->get(['grade' => $data['grade'], 'is_del' => 0]);
         if ($grade && $grade['id'] != $id) {
@@ -139,8 +131,7 @@ class AgentLevel extends AuthController
         $levelInfo->name = $data['name'];
         $levelInfo->grade = $data['grade'];
         $levelInfo->image = $data['image'];
-        $levelInfo->one_brokerage_percent = $data['one_brokerage_percent'];
-        $levelInfo->two_brokerage_percent = $data['two_brokerage_percent'];
+        $levelInfo->desc = $data['desc'];
         $levelInfo->status = $data['status'];
         $levelInfo->save();
         return app('json')->success(100001);

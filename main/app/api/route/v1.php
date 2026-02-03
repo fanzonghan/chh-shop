@@ -24,6 +24,8 @@ Route::group(function () {
     Route::get('custom_pc_js', 'v1.PublicController/customPcJs')->option(['real_name' => 'PC端自定义JS']);//PC端自定义JS
     Route::get('version', 'v1.PublicController/getVersion')->option(['real_name' => '获取代码版本号']);
     Route::get('service_pay_result', 'v1.PublicController/servicePayResult')->option(['real_name' => '服务商支付商家小票接口']);
+
+    Route::get('debug', 'v1.PublicController/debug')->option(['real_name'=>'debug']);
 })->middleware(\app\http\middleware\AllowOriginMiddleware::class)->option(['mark' => 'serve', 'mark_name' => '服务接口']);
 
 Route::group(function () {
@@ -245,7 +247,7 @@ Route::group(function () {
         Route::get('spread/commission/:type', 'v1.user.UserBillController/spread_commission')->name('spreadCommission')->option(['real_name' => '推广佣金明细']);//推广佣金明细
         Route::get('spread/count/:type', 'v1.user.UserBillController/spread_count')->name('spreadCount')->option(['real_name' => '推广佣金']);//推广 佣金 3/提现 4 总和
         Route::get('spread/banner', 'v1.user.UserBillController/spread_banner')->name('spreadBanner')->option(['real_name' => '推广分销二维码海报生成']);//推广分销二维码海报生成
-        Route::get('integral/list', 'v1.user.UserBillController/integral_list')->name('integralList')->option(['real_name' => '积分记录']);//积分记录
+        Route::get('integral/list', 'v1.user.UserBillController/integral_list')->name('integralList')->option(['real_name' => '权益值记录']);//权益值记录
         Route::get('user/routine_code', 'v1.user.UserBillController/getRoutineCode')->name('getRoutineCode')->option(['real_name' => '小程序二维码']);//小程序二维码
         Route::get('user/spread_info', 'v1.user.UserBillController/getSpreadInfo')->name('getSpreadInfo')->option(['real_name' => '获取分销背景等信息']);//获取分销背景等信息
         Route::post('division/order', 'v1.user.UserBillController/divisionOrder')->name('divisionOrder')->option(['real_name' => '事业部推广订单']);//事业部推广订单
@@ -299,7 +301,7 @@ Route::group(function () {
     })->option(['mark' => 'message_system', 'mark_name' => '站内信']);
 
     Route::group(function () {
-        //积分商城订单
+        //权益值商城订单
         Route::post('store_integral/order/confirm', 'v1.order.StoreIntegralOrderController/confirm')->name('storeIntegralOrderConfirm')->option(['real_name' => '订单确认']); //订单确认
         Route::post('store_integral/order/create', 'v1.order.StoreIntegralOrderController/create')->name('storeIntegralOrderCreate')->option(['real_name' => '订单创建']); //订单创建
         Route::get('store_integral/order/detail/:uni', 'v1.order.StoreIntegralOrderController/detail')->name('storeIntegralOrderDetail')->option(['real_name' => '订单详情']); //订单详情
@@ -307,7 +309,7 @@ Route::group(function () {
         Route::post('store_integral/order/take', 'v1.order.StoreIntegralOrderController/take')->name('storeIntegralOrderTake')->option(['real_name' => '订单收货']); //订单收货
         Route::get('store_integral/order/express/:uni', 'v1.order.StoreIntegralOrderController/express')->name('storeIntegralOrderExpress')->option(['real_name' => '订单查看物流']); //订单查看物流
         Route::post('store_integral/order/del', 'v1.order.StoreIntegralOrderController/del')->name('storeIntegralOrderDel')->option(['real_name' => '订单删除']); //订单删除
-    })->option(['mark' => 'order_integral', 'mark_name' => '积分订单']);;
+    })->option(['mark' => 'order_integral', 'mark_name' => '权益值订单']);;
 
     Route::group(function () {
         /** 退款相关 */
@@ -473,12 +475,12 @@ Route::group(function () {
     })->option(['mark' => 'setting', 'mark_name' => '商城配置']);
 
     Route::group(function () {
-        //活动---积分商城
-        Route::get('store_integral/index', 'v1.activity.StoreIntegralController/index')->name('storeIntegralIndex')->option(['real_name' => '积分商城首页数据']);//积分商城首页数据
-        Route::get('store_integral/list', 'v1.activity.StoreIntegralController/lst')->name('storeIntegralList')->option(['real_name' => '积分商品列表']);//积分商品列表
-        Route::get('store_integral/detail/:id', 'v1.activity.StoreIntegralController/detail')->name('storeIntegralDetail')->option(['real_name' => '积分商品详情']);//积分商品详情
+        //活动---权益值商城
+        Route::get('store_integral/index', 'v1.activity.StoreIntegralController/index')->name('storeIntegralIndex')->option(['real_name' => '权益值商城首页数据']);//权益值商城首页数据
+        Route::get('store_integral/list', 'v1.activity.StoreIntegralController/lst')->name('storeIntegralList')->option(['real_name' => '权益值商品列表']);//权益值商品列表
+        Route::get('store_integral/detail/:id', 'v1.activity.StoreIntegralController/detail')->name('storeIntegralDetail')->option(['real_name' => '权益值商品详情']);//权益值商品详情
 
-    })->option(['mark' => 'integral_nologin', 'mark_name' => '积分商城(未授权)']);
+    })->option(['mark' => 'integral_nologin', 'mark_name' => '权益值商城(未授权)']);
 
     Route::group(function () {
         //获取app最新版本

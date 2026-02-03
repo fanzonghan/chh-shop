@@ -112,7 +112,7 @@ class StoreProduct extends AuthController
             ['is_vip', 0],//付费会员价
             ['recommend', []],//商品推荐
             ['temp_id', 0],//运费模版id
-            ['give_integral', 0],//赠送积分
+            ['give_integral', 0],//赠送权益值
             ['presale', 0],//预售商品开关
             ['presale_time', 0],//预售时间
             ['presale_day', 0],//预售发货日
@@ -160,7 +160,7 @@ class StoreProduct extends AuthController
             ['is_vip', 0],//付费会员价
             ['recommend', []],//商品推荐
             ['temp_id', 0],//运费模版id
-            ['give_integral', 0],//赠送积分
+            ['give_integral', 0],//赠送权益值
             ['presale', 0],//预售商品开关
             ['presale_time', 0],//预售时间
             ['presale_day', 0],//预售发货日

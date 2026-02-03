@@ -16,7 +16,7 @@ use app\dao\BaseDao;
 use app\model\user\UserBill;
 
 /**
- * 用户资金&积分&经验
+ * 用户资金&权益值&经验
  * Class UserBilldao
  * @package app\dao\user
  */
@@ -292,7 +292,7 @@ class UserBillDao extends BaseDao
     }
 
     /**
-     * 积分趋势
+     * 权益值趋势
      * @param $time
      * @param $timeType
      * @param $field

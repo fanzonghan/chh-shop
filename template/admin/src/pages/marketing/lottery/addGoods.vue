@@ -5,7 +5,7 @@
         <el-radio-group v-model="formValidate.type">
           <el-radio :label="1">未中奖</el-radio>
           <el-radio :label="5">优惠券</el-radio>
-          <el-radio :label="2">积分</el-radio>
+          <el-radio :label="2">权益值</el-radio>
           <el-radio :label="6">商品</el-radio>
           <el-radio :label="4">红包</el-radio>
           <el-radio :label="3">余额</el-radio>
@@ -20,7 +20,7 @@
         <el-button type="primary" v-db-click @click="addCoupon" v-if="!couponName.length">添加优惠券</el-button>
       </el-form-item>
       <el-form-item
-        :label="[3, 4].includes(formValidate.type) ? '金额信息' : '积分数量'"
+        :label="[3, 4].includes(formValidate.type) ? '金额信息' : '权益值数量'"
         prop="num"
         v-if="[2, 3, 4].includes(formValidate.type)"
       >
@@ -145,7 +145,7 @@ export default {
         coverImg: '',
       },
       formValidate: {
-        type: 5, //类型 1：未中奖2：积分  3:余额  4：红包 5:优惠券 6：站内商品
+        type: 5, //类型 1：未中奖2：权益值  3:余额  4：红包 5:优惠券 6：站内商品
         name: '', //活动名称
         num: 0, //奖品数量
         image: '', //奖品图片

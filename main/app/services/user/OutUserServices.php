@@ -176,7 +176,7 @@ class OutUserServices extends BaseServices
     }
 
     /**
-     * 赠送(积分/余额/付费会员)
+     * 赠送(权益值/余额/付费会员)
      * @param int $id
      * @param array $data
      * @return bool

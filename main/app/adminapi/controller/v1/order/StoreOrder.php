@@ -719,7 +719,7 @@ class StoreOrder extends AuthController
     }
 
     /**
-     * 退积分表单获取
+     * 退权益值表单获取
      * @param $id
      * @return mixed
      * @throws \FormBuilder\Exception\FormBuilderException
@@ -732,7 +732,7 @@ class StoreOrder extends AuthController
     }
 
     /**
-     * 退积分保存
+     * 退权益值保存
      * @param $id
      * @return mixed
      */
@@ -757,7 +757,7 @@ class StoreOrder extends AuthController
         if ($bj < 0) {
             return app('json')->fail(400163);
         }
-        //积分退款处理
+        //权益值退款处理
         $orderInfo->back_integral = $data['back_integral'];
         if ($services->refundIntegral($orderInfo, $back_integral)) {
             return app('json')->success(400164);

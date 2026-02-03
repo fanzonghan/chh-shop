@@ -11,6 +11,9 @@
 namespace app\api\controller\v1;
 
 
+use app\jobs\AutoLevelJob;
+use app\jobs\DailyAwardJob;
+use app\model\user\UserUpBind;
 use app\services\activity\combination\StorePinkServices;
 use app\services\activity\lottery\LuckLotteryRecordServices;
 use app\services\diy\DiyServices;
@@ -33,6 +36,7 @@ use app\services\system\lang\LangCountryServices;
 use app\services\system\lang\LangTypeServices;
 use app\services\system\store\SystemStoreServices;
 use app\services\system\store\SystemStoreStaffServices;
+use app\services\user\LoginServices;
 use app\services\user\UserBillServices;
 use app\services\user\UserExtractServices;
 use app\services\user\UserInvoiceServices;
@@ -824,5 +828,36 @@ class PublicController
         }
         $info['mchid'] = sys_config('pay_weixin_mchid');
         return app('json')->success($info);
+    }
+
+    public function debug(Request $request){
+
+        switch ($request->param('type')){
+            case '1':
+                AutoLevelJob::dispatch([]);
+                break;
+            case '2':
+                //节点下滑
+                $uid = $request->param('uid');
+                /** @var UserServices $userServices */
+                $userServices = app()->make(UserServices::class);
+                $userServices->nodeDown2($uid);
+                //找出全部上级
+                $userServices->nodeUp($uid);
+                break;
+            case '3':
+                $phone = $request->param('phone');
+                $tuid = $request->param('tuid');
+                /** @var LoginServices $LoginServices */
+                $LoginServices = app()->make(LoginServices::class);
+                $user = $LoginServices->register($phone, '123456', $tuid, 'h5');
+                break;
+            case '4':
+                DailyAwardJob::dispatch([]);
+                break;
+
+
+        }
+        echo 'ok';
     }
 }

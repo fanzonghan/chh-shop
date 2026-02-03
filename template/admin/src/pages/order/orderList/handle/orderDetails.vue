@@ -108,7 +108,7 @@
                   <div class="value">{{ orderDatalist.orderInfo.coupon_price }}</div>
                 </li>
                 <li class="item">
-                  <div>积分抵扣：</div>
+                  <div>权益值抵扣：</div>
                   <div class="value">{{ orderDatalist.orderInfo.deduction_price || '0.0' }}</div>
                 </li>
                 <li class="item">

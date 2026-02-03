@@ -30,20 +30,7 @@
 								</view>
 								<template>
 									<view class="level-grow-wrap">
-										<view class="level-info"
-											:class="{'lock-sty':item.grade > (levelInfo.grade || 0)}">
-											<view class="level-info-title">{{$t(`一级分佣比例`)}}</view>
-											<view class="num">{{item.one_brokerage_percent}}
-												<text class="percent">%</text>
-											</view>
-										</view>
-										<view class="level-info"
-											:class="{'lock-sty':item.grade > (levelInfo.grade || 0)}">
-											<view class="level-info-title">{{$t(`二级分佣比例`)}}</view>
-											<view class="num">{{item.two_brokerage_percent}}<text class="percent">%</text>
-											</view>
-										</view>
-
+										<view class="level-info" v-html="item.desc"></view>
 									</view>
 								</template>
 							</view>
@@ -58,14 +45,6 @@
 						</view>
 						<text>
 							{{$t(`快速升级技巧`)}}
-						</text>
-					</view>
-					<view class="task">
-						<text class="task-num">
-							{{ taskNum  }}
-						</text>
-						<text>
-							/{{ task.length}}
 						</text>
 					</view>
 				</view>

@@ -292,7 +292,7 @@ class ExportServices extends BaseServices
             '已售数量', '起购数量',
             '规格类型', '规格名称', '售价', '划线价', '成本价', '库存', '重量', '体积', '商品编码', '条形码',
             '商品简介', '商品关键字', '商品口令',
-            '购买送积分'
+            '购买送权益值'
         ];
         $filename = '商品导出_' . date('YmdHis', time());
         $virtualType = ['普通商品', '卡密/网盘', '优惠券', '虚拟商品'];
@@ -576,7 +576,7 @@ class ExportServices extends BaseServices
                 ];
             }
         }
-        $header = ['会员ID', '昵称', '金额/积分', '类型', '备注', '创建时间'];
+        $header = ['会员ID', '昵称', '金额/权益值', '类型', '备注', '创建时间'];
         $title = ['资金监控', '资金监控', date('Y-m-d H:i:s', time())];
         $filename = '资金监控_' . date('YmdHis', time());
         $suffix = 'xlsx';
@@ -611,7 +611,7 @@ class ExportServices extends BaseServices
     }
 
     /**
-     * 用户积分导出
+     * 用户权益值导出
      * @param $data 导出数据
      */
     public function userPoint($data = [])
@@ -630,9 +630,9 @@ class ExportServices extends BaseServices
                 ];
             }
         }
-        $header = ['编号', '标题', '变动前积分', '积分变动', '备注', '用户微信昵称', '添加时间'];
-        $title = ['积分日志', '积分日志' . time(), '生成时间：' . date('Y-m-d H:i:s', time())];
-        $filename = '积分日志_' . date('YmdHis', time());
+        $header = ['编号', '标题', '变动前权益值', '权益值变动', '备注', '用户微信昵称', '添加时间'];
+        $title = ['权益值日志', '权益值日志' . time(), '生成时间：' . date('Y-m-d H:i:s', time())];
+        $filename = '权益值日志_' . date('YmdHis', time());
         $suffix = 'xlsx';
         $is_save = true;
         return $this->export($header, $title, $export, $filename, $suffix, $is_save);
@@ -740,13 +740,13 @@ class ExportServices extends BaseServices
                 $price = $info['total_price'] + $info['pay_postage'];
                 $zhichu = $info['coupon_price'] + $info['deduction_price'] + $info['cost'];
                 $profit = ($info['total_price'] + $info['pay_postage']) - ($info['coupon_price'] + $info['deduction_price'] + $info['cost']);
-                $deduction = $info['deduction_price'];//积分抵扣
+                $deduction = $info['deduction_price'];//权益值抵扣
                 $coupon = $info['coupon_price'];//优惠
                 $cost = $info['cost'];//成本
                 $export[] = [$time, $price, $zhichu, $cost, $coupon, $deduction, $profit];
             }
         }
-        $header = ['时间', '营业额(元)', '支出(元)', '成本', '优惠', '积分抵扣', '盈利(元)'];
+        $header = ['时间', '营业额(元)', '支出(元)', '成本', '优惠', '权益值抵扣', '盈利(元)'];
         $title = ['财务统计', '财务统计', date('Y-m-d H:i:s', time())];
         $filename = '财务统计_' . date('YmdHis', time());
         $suffix = 'xlsx';

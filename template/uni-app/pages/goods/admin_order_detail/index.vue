@@ -113,7 +113,7 @@
 				<view class='conter'>-{{$t(`￥`)}}{{parseFloat(orderInfo.coupon_price).toFixed(2)}}</view>
 			</view>
 			<view class='item acea-row row-between' v-if="orderInfo.use_integral > 0">
-				<view>{{$t(`积分抵扣`)}}：</view>
+				<view>{{$t(`权益值抵扣`)}}：</view>
 				<view class='conter'>-{{$t(`￥`)}}{{parseFloat(orderInfo.deduction_price).toFixed(2)}}</view>
 			</view>
 			<view class='actualPay acea-row row-right'>{{$t(`实付款`)}}：<text

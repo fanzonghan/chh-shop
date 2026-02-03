@@ -388,7 +388,7 @@ export function seckillActivityStatusApi(data) {
 }
 
 /**
- * @description 积分日志 -- 列表
+ * @description 权益值日志 -- 列表
  */
 export function integralListApi(params) {
   return request({
@@ -399,7 +399,7 @@ export function integralListApi(params) {
 }
 
 /**
- * @description 积分日志 -- 头部
+ * @description 权益值日志 -- 头部
  */
 export function integralStatisticsApi(params) {
   return request({
@@ -410,7 +410,7 @@ export function integralStatisticsApi(params) {
 }
 
 /**
- * @description 积分日志 -- 头部
+ * @description 权益值日志 -- 头部
  */
 export function seckillTimeListApi() {
   return request({
@@ -463,7 +463,7 @@ export function delCouponReleased(id) {
 }
 
 /**
- * @description 积分日志 -- 导出
+ * @description 权益值日志 -- 导出
  */
 export function userPointApi(data) {
   return request({
@@ -507,7 +507,7 @@ export function storeSeckillApi(data) {
 }
 
 /**
- * @description 积分商品 -- 列表
+ * @description 权益值商品 -- 列表
  */
 export function integralProductListApi(params) {
   return request({
@@ -518,7 +518,7 @@ export function integralProductListApi(params) {
 }
 
 /**
- * @description 积分商品 -- 保存编辑
+ * @description 权益值商品 -- 保存编辑
  */
 export function integralAddApi(data) {
   return request({
@@ -529,7 +529,7 @@ export function integralAddApi(data) {
 }
 
 /**
- * @description 积分商品 -- (多个) 保存
+ * @description 权益值商品 -- (多个) 保存
  */
 export function integralAddBatch(data) {
   return request({
@@ -540,7 +540,7 @@ export function integralAddBatch(data) {
 }
 
 /**
- * @description 积分商品 -- 详情
+ * @description 权益值商品 -- 详情
  */
 export function integralInfoApi(id) {
   return request({
@@ -549,7 +549,7 @@ export function integralInfoApi(id) {
   });
 }
 /**
- * @description 积分商品 -- 修改状态
+ * @description 权益值商品 -- 修改状态
  */
 export function integralIsShowApi(data) {
   return request({
@@ -558,7 +558,7 @@ export function integralIsShowApi(data) {
   });
 }
 /**
- * @description 积分订单管理--列表
+ * @description 权益值订单管理--列表
  * @param {Object} param data {Object} 传值参数
  */
 export function integralOrderList(data) {
@@ -570,7 +570,7 @@ export function integralOrderList(data) {
 }
 
 /**
- * @description 积分订单数据--列表
+ * @description 权益值订单数据--列表
  * @param {Object} param data {Object} 传值参数
  */
 export function integralGetOrdes(data) {
@@ -661,7 +661,7 @@ export function integralOrderPutRemarkData(data) {
   });
 }
 /**
- * @description 积分备注
+ * @description 权益值备注
  * @param {Number} param data.id {Number} 订单id
  * @param {String} param data.remark {String} 备注信息
  */
@@ -695,7 +695,7 @@ export function orderExpressTemp(data) {
   });
 }
 /**
- * 积分统计列表
+ * 权益值统计列表
  * @param {com} data
  */
 export function pointRecordList(data) {
@@ -706,7 +706,7 @@ export function pointRecordList(data) {
   });
 }
 /**
- * 积分统计列表 备注
+ * 权益值统计列表 备注
  * @param {com} data
  */
 export function pointRecordRemark(id, data) {
@@ -724,7 +724,7 @@ export function orderSheetInfo() {
   });
 }
 /**
- * 积分统计顶部
+ * 权益值统计顶部
  * @param {com} data
  */
 export function getPointBasic(data) {
@@ -736,7 +736,7 @@ export function getPointBasic(data) {
 }
 
 /**
- * 积分统计 折线图
+ * 权益值统计 折线图
  * @param {com} data
  */
 export function getPointTrend(data) {
@@ -748,7 +748,7 @@ export function getPointTrend(data) {
 }
 
 /**
- * @description 积分来源分析
+ * @description 权益值来源分析
  * @param {Object} param data {Object} 传值参数
  */
 export function getChannel(params) {
@@ -759,7 +759,7 @@ export function getChannel(params) {
   });
 }
 /**
- * @description 积分消耗分析
+ * @description 权益值消耗分析
  * @param {Object} param data {Object} 传值参数
  */
 export function getType(params) {

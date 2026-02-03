@@ -2,15 +2,15 @@
   <!-- 营销设置 -->
   <el-row>
     <el-col :span="24">
-      <el-form-item label="购买送积分：" prop="give_integral">
+      <el-form-item label="购买送权益值：" prop="give_integral">
         <el-input-number
           :controls="false"
           v-model="formValidate.give_integral"
           :min="0"
           :max="9999999999"
-          placeholder="请输入积分"
+          placeholder="请输入权益值"
           class="input_width input-number-unit-class"
-          class-unit="积分"
+          class-unit="权益值"
         />
       </el-form-item>
     </el-col>

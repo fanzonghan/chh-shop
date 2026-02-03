@@ -12,7 +12,7 @@
 					</view>
 					<view class="money font-color">
 						<view class="acea-row row-middle">
-							<text class="num">{{ attr.productSelect.price }}{{$t(`积分`)}}</text>
+							<text class="num">{{ attr.productSelect.price }}{{$t(`权益值`)}}</text>
 						</view>
 						<text class="stock" v-if='isShow'>{{$t(`库存`)}}: {{ attr.productSelect.stock }}</text>
 						<text class='stock' v-if="limitNum">{{$t(`剩余`)}}: {{attr.productSelect.quota}}</text>

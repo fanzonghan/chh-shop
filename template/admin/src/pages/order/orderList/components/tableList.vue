@@ -228,7 +228,7 @@
                   v-show="scope.row.paid == 1 && scope.row.refund_status == 0 && !scope.row.refund.length"
                   >立即退款</el-dropdown-item
                 >
-                <!--                            <el-dropdown-item command="6"  v-show='scope.row._status !==1 && (scope.row.use_integral > 0 && scope.row.use_integral >= scope.row.back_integral) '>退积分</el-dropdown-item>-->
+                <!--                            <el-dropdown-item command="6"  v-show='scope.row._status !==1 && (scope.row.use_integral > 0 && scope.row.use_integral >= scope.row.back_integral) '>退权益值</el-dropdown-item>-->
                 <!--                            <el-dropdown-item command="7"  v-show='scope.row._status === 3'>不退款</el-dropdown-item>-->
                 <el-dropdown-item command="8" v-show="scope.row._status === 4">已收货</el-dropdown-item>
                 <el-dropdown-item command="9">删除订单</el-dropdown-item>
@@ -243,7 +243,7 @@
     <div class="acea-row row-right page">
       <pagination v-if="total" :total="total" :page.sync="page.page" :limit.sync="page.limit" @pagination="getList" />
     </div>
-    <!-- 编辑 退款 退积分 不退款-->
+    <!-- 编辑 退款 退权益值 不退款-->
     <edit-from ref="edits" :FromData="FromData" @submitFail="submitFail"></edit-from>
     <!-- 详情 -->
     <details-from ref="details" :orderDatalist="orderDatalist" :orderId="orderId"></details-from>
@@ -744,7 +744,7 @@ export default {
         this.$emit('changeGetTabs');
       });
     },
-    // 获取退积分表单数据
+    // 获取退权益值表单数据
     getRefundIntegral(id) {
       refundIntegral(id)
         .then(async (res) => {
